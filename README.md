@@ -6,7 +6,7 @@ Users can track their trainings as well as their progress in the application.
 The application should run on GitHub Codespaces and interface with a GUI running on Budibase.
 Interfacing is done using REST API's and documentation is done in Swagger UI.
 
-**The name of the application is: X-Gains**
+## App Content
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="450" height="450">
 
