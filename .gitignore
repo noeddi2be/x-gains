@@ -1,2 +1,51 @@
+x-gains/HELP.md
+x-gains/target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# MacOS
 .DS_Store
-.vscode
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Eclipse project files
+*.project
+*.classpath
+*.settings/
+bin/
+tmp/
+target/
+.metadata
+.recommenders
