@@ -5,8 +5,7 @@ Users can track their trainings as well as their progress in the application.
 
 The name of the application is: X-Gains
 
-![[www/thumbnail.jpg|300]]
-![Thumbnail](https://github.com/[noeddi2be]/[x-gains]/blob/[main]/www/thumbnail.jpg?raw=true)
+![Thumbnail](https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true)
 
 ### Supported Exercises
 
