@@ -1,6 +1,6 @@
 x-gains/HELP.md
 x-gains/target/
-!.mvn/wrapper/maven-wrapper.jar
+!x-gains/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
 
