@@ -2,22 +2,16 @@
 
 We want to create a fitness tracker with a predefined list of exercises.
 Users can track their trainings as well as their progress in the application.
-
 <br>
-
 The application should run on GitHub Codespaces and interface with a GUI running on Budibase.
 Interfacing is done using REST API's and documentation is done in Swagger UI.
-
 <br>
 <br>
-
 **The name of the application is: X-Gains**
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="450" height="450">
-
 <br>
 <br>
-
 ### Supported Exercises
 
 | No. | Exercise | Attribute 1| Attribute 2| Attribute 3| 
