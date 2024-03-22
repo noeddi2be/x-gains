@@ -3,6 +3,7 @@ x-gains/target/
 !x-gains/.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
+/x-gains/.gitignore
 
 # MacOS
 .DS_Store
