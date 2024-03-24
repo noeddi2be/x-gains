@@ -9,5 +9,4 @@ public class XGainsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(XGainsApplication.class, args);
 	}
-
 }
