@@ -21,11 +21,11 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - Create additional classes for different objects.
 
 ### To do:
-[x] Create a Maven project for managing dependencies
-[ ] Create model
-[ ] Create view -> needed? API?
-[ ] Create controller -> needed? API?
-[ ] Create Basic Spring Boot application with a webserver
+- [x] Create a Maven project for managing dependencies
+- [ ] Create model
+- [ ] Create view -> needed? API?
+- [ ] Create controller -> needed? API?
+- [ ] Create Basic Spring Boot application with a webserver
 
 ## Testing
 
@@ -33,6 +33,6 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - Implement tests for important functionalities. 
 
 ### To do:
-[ ] API tests
-[ ] Logic tests
+- [ ] API tests
+- [ ] Logic tests
 
