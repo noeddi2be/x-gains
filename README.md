@@ -1,6 +1,6 @@
-# Use Case: X-Gains
+# [👆🏼 Project Management File](https://github.com/noeddi2be/x-gains/blob/main/PROJECT-MANAGEMENT.md)
 
-[Project Management](https://github.com/noeddi2be/x-gains/blob/main/PROJECT-MANAGEMENT.md)
+# ☕️ Use Case: X-Gains
 
 We want to create a fitness tracker with a predefined list of exercises.
 Users can track their trainings as well as their progress in the application.
@@ -8,11 +8,11 @@ Users can track their trainings as well as their progress in the application.
 The application should run on GitHub Codespaces and interface with a GUI running on Budibase.
 Interfacing is done using REST API's and documentation is done in Swagger UI.
 
-## App Content
+## 📱 App Content
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="450" height="450">
 
-### Supported Exercises
+### 🏋🏽 Supported Exercises
 
 | No. | Exercise | Attribute 1| Attribute 2| Attribute 3| 
 | --- | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ Interfacing is done using REST API's and documentation is done in Swagger UI.
 | 19 | Sprints | Sets | Time | Distance |
 | 20 | Box Jumps | Sets | Repetitions | Height |
 
-## Scenario and User Stories
+## 🧩 Scenario and User Stories
 
 X-Gains is a basic fitness tracking app designed to assist our users in achieving their health and fitness goals. Whether you are a beginner starting your fitness journey or a more advanced athlete looking to optimize your workouts, X-Gains provides a user-friendly platform packed with robust features to support you every step of the way. X-Gains is more than just a fitness tracker; it is a tool designed to empower users to take control of their health and fitness, stay motivated, and achieve their desired results. X-Gains is your ultimate companion on the path to a healthier, stronger you.
 
