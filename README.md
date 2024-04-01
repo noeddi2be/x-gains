@@ -51,7 +51,7 @@ X-Gains is a basic fitness tracking app designed to assist our users in achievin
 <br>
 <br>
 
-### 🟠 User Stories
+### 🧩 User Stories
 **🟠 Admin Role**
 * As an admin, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
 * As an admin, I want to be able to log in securely to the X-Gains app to access administrative features.
