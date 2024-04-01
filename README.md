@@ -1,4 +1,4 @@
-# [👆🏼 Project Management File](https://github.com/noeddi2be/x-gains/blob/main/PROJECT-MANAGEMENT.md)
+# [👉🏼 Project Management File](https://github.com/noeddi2be/x-gains/blob/main/PROJECT-MANAGEMENT.md)
 
 # ☕️ Use Case: X-Gains
 
