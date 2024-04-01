@@ -49,7 +49,7 @@ Interfacing is done using REST API's and documentation is done in Swagger UI.
 X-Gains is a basic fitness tracking app designed to assist our users in achieving their health and fitness goals. Whether you are a beginner starting your fitness journey or a more advanced athlete looking to optimize your workouts, X-Gains provides a user-friendly platform packed with robust features to support you every step of the way. X-Gains is more than just a fitness tracker; it is a tool designed to empower users to take control of their health and fitness, stay motivated, and achieve their desired results. X-Gains is your ultimate companion on the path to a healthier, stronger you.
 
 <br>
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="450" height="450">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450">
 <br>
 
 ### 🧩 User Stories
