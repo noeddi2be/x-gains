@@ -1,5 +1,7 @@
 # Use Case: X-Gains
 
+[Project Management](https://github.com/noeddi2be/x-gains/blob/main/PROJECT-MANAGEMENT.md)
+
 We want to create a fitness tracker with a predefined list of exercises.
 Users can track their trainings as well as their progress in the application.
 
