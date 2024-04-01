@@ -1,4 +1,4 @@
-# Project Management
+# General Project Management
 
 In this file, we intend to manage tasks of our project, mostly regarding the Java backend as well as API integration with Budibase.
 
@@ -14,20 +14,25 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - Create unit tests to ensure proper functioning.
 
 
-## Features & Tasks
+# Features & Tasks
 
 - Create different classes.
 - Create main class
-- Create model
-- Create view -> needed? API?
-- Create controller -> needed? API?
-- Additional classes for different objects.
+- Create additional classes for different objects.
+
+### To do:
+[x] Create a Maven project for managing dependencies
+[ ] Create model
+[ ] Create view -> needed? API?
+[ ] Create controller -> needed? API?
+[ ] Create Basic Spring Boot application with a webserver
 
 ## Testing
 
 - Implement testing for the different classes.
-- Implement tests for important functionalities.
+- Implement tests for important functionalities. 
 
-- API
-- Logic
+### To do:
+[ ] API tests
+[ ] Logic tests
 
