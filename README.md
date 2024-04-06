@@ -61,6 +61,11 @@ X-Gains is a basic fitness tracking app designed to assist our users in achievin
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450">
 <br>
 
+## 🔧 Wireframe
+
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="1347" height="791">
+<br>
+
 ### 🧩 User Stories
 **🟠 Admin Role**
 * As an admin, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
