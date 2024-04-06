@@ -4,11 +4,11 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class JUnitTestClassTests {
+public class ExampleJUnitClassTests {
 
     @Test
     void testAddNumbers() {
-        JUnitTestClass testClass = new JUnitTestClass();
+        ExampleJUnitClass testClass = new ExampleJUnitClass();
         int result = testClass.addNumbers(4, 5);
         assertEquals(9, result);
     }

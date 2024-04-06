@@ -1,6 +1,6 @@
 package com.brugg2.fitness_tracker.xgains;
 
-public class JUnitTestClass {
+public class ExampleJUnitClass {
 
      /**
       * 

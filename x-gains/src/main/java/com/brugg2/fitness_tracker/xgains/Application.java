@@ -3,11 +3,10 @@ package com.brugg2.fitness_tracker.xgains;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-// To Do: Rename to Application 
 @SpringBootApplication
-public class XGainsApplication {
+public class Application {
 
 	public static void main(String[] args) {
-		SpringApplication.run(XGainsApplication.class, args);
+		SpringApplication.run(Application.class, args);
 	}
 }
