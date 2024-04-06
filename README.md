@@ -61,7 +61,7 @@ X-Gains is a basic fitness tracking app designed to assist our users in achievin
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450">
 <br>
 
-## 🔧 Wireframe
+## 🔧 Wireframe User
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="900" height="550">
 <br>
