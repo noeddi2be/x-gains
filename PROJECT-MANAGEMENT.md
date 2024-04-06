@@ -22,9 +22,12 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 
 ### ✅ To do:
 - [x] Create a Maven project for managing dependencies
-- [ ] Create model
-- [ ] Create view -> needed? API?
-- [ ] Create controller -> needed? API?
+- [x] Create different packages (java & test)
+- [ ] Create wireframe
+- [ ] Create model classes
+- [ ] Create controller classes
+- [ ] Implement frontend
+- [ ] Implement data source connection
 - [ ] Create Basic Spring Boot application with a webserver
 
 ## 🧪 Testing
