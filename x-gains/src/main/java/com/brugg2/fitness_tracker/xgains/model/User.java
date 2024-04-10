@@ -3,6 +3,7 @@ package com.brugg2.fitness_tracker.xgains.model;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Date;
 import java.util.Random;
 
 public class User {
@@ -15,7 +16,7 @@ public class User {
     private String hashedPassword;
     private String firstname;
     private String lastname;
-    //private String birthdate;
+    private Date birthdate;
 
     private static final Random RANDOM = new Random();
 
@@ -61,6 +62,10 @@ public class User {
         this.lastname = lastname;
     }
 
+    public void setBirthdate(Date birthdate){
+        this.birthdate = birthdate;
+    }
+
 
     // Getters
     public int getUserID() {
@@ -89,6 +94,10 @@ public class User {
 
     public String getLastname() {
         return this.lastname;
+    }
+
+    public Date getBirthdate() {
+        return this.birthdate;
     }
 
 
