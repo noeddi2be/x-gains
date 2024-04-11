@@ -1,11 +1,10 @@
-package com.brugg2.fitness_tracker.xgains.model;
+package com.brugg2.fitness_tracker.xgains.model.entity;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
 import org.junit.jupiter.api.Test;
 
-public class UserTest {
+class UserTest {
 
     @Test
     /**

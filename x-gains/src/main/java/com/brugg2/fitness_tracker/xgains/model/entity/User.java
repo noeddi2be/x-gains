@@ -1,12 +1,10 @@
-package com.brugg2.fitness_tracker.xgains.model;
+package com.brugg2.fitness_tracker.xgains.model.entity;
 
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
-import java.util.Random;
 
-public class User {
+import com.brugg2.fitness_tracker.xgains.model.service.PasswordHashingService;
+
+public final class User {
 
     private int userID;
     private String accountType;
@@ -17,8 +15,6 @@ public class User {
     private String firstname;
     private String lastname;
     private Date birthdate;
-
-    private static final Random RANDOM = new Random();
 
 
     // Setters
@@ -31,6 +27,8 @@ public class User {
      * specified
      * with a number. Only the right combination of numbers will result in admin.
      * Chose -> 12345678 to set admin.
+     * -> For simplicity, the admin role will not be supported in the app. Admin
+     * and user will have the same functionality.
      * @param accountType all numbers except the special number result in user.
      */
     public void setAccountType(int accountType) {
@@ -49,9 +47,13 @@ public class User {
         this.email = email;
     }
 
+    public void setSalt() {
+        this.salt = PasswordHashingService.setSalt();
+    }
+
     public void setPassword(String password) {
-       String newPassword =  hashPassword(password);
-       this.hashedPassword = newPassword; 
+        setSalt();
+        this.hashedPassword =  PasswordHashingService.hashPassword(password, salt);
     }
 
     public void setFirstname(String firstname) {
@@ -99,44 +101,4 @@ public class User {
     public Date getBirthdate() {
         return this.birthdate;
     }
-
-
-    /**
-     * Setting the salt for the user. The method is called when using the setter
-     * to set the instance variable hashedPassword.
-     * The salt is only reset when the password is changed.
-     */
-    private void setSalt() {
-        int randomNumber = RANDOM.nextInt() * 100 + RANDOM.nextInt();
-        this.salt = randomNumber;
-    }
-
-
-    /**
-     * Function to hash the passwort. When calling the method a new salt is set for
-     * user instance. The salt and the hashed password can be stored in the database.
-     * Function can be used for setting the password as well as loging in. 
-     * @param password is the password in plain text entered by the user.
-     */
-    public String hashPassword(String password) {
-        setSalt();
-        String saltedPassword = password + this.salt;
-
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-512");
-            byte[] bytes = md.digest(saltedPassword.getBytes(StandardCharsets.UTF_8));
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < bytes.length; i++) {
-                sb.append(Integer.toString((bytes[i] & 0xff) + 0x100, 16).substring(1));
-            }
-
-            hashedPassword = sb.toString();
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
-
-        return hashedPassword;
-    }
-
 }
