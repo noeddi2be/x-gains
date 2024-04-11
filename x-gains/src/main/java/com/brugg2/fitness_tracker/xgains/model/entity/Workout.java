@@ -2,7 +2,7 @@ package com.brugg2.fitness_tracker.xgains.model.entity;
 
 import java.util.Date;
 
-public class Workout {
+public final class Workout {
 
     private int workoutID;
     private String workoutName;

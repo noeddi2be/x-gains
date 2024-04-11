@@ -1,6 +1,6 @@
 package com.brugg2.fitness_tracker.xgains.model.entity;
 
-public class Exercise {
+public final class Exercise {
 
     private int exerciseID;
     private String exerciseName;
