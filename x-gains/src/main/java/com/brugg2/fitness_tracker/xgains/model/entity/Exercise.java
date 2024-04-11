@@ -1,15 +1,48 @@
 package com.brugg2.fitness_tracker.xgains.model.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "exercise")
 public final class Exercise {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "exercise_id")
     private int exerciseID;
+
+    @Column(name = "exercise_name", nullable = false, length = 50)
     private String exerciseName;
+
+    @Column(name = "exercise_description", nullable = false, length = 255)
     private String exerciseDescription;
+
+    @Column(name = "weight")
     private int weight;
+
+    @Column(name = "repetition")
     private int repetition;
+
+    @Column(name = "number_of_sets")
     private int numberOfSets;
+
+    @Column(name = "time")
     private int time;
+
+    @Column(name = "distance")
     private int distance;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
 
     // Setters
     public void setExerciseID(int exerciseID) {
@@ -44,38 +77,46 @@ public final class Exercise {
         this.distance = distance;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
 
     // Getters
     public int getExerciseID() {
-        return exerciseID;
+        return this.exerciseID;
     }
 
     public String getExerciseName() {
-        return exerciseName;
+        return this.exerciseName;
     }
 
     public String getExerciseDescription() {
-        return exerciseDescription;
+        return this.exerciseDescription;
     }
 
     public int getWeight() {
-        return weight;
+        return this.weight;
     }
 
     public int getRepetition() {
-        return repetition;
+        return this.repetition;
     }
 
     public int getNumberOfSets() {
-        return numberOfSets;
+        return this.numberOfSets;
     }
 
     public int getTime() {
-        return time;
+        return this.time;
     }
 
     public int getDistance() {
-        return distance;
+        return this.distance;
+    }
+
+    public User getUser() {
+        return this.user;
     }
 
 }

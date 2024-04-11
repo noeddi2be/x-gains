@@ -13,31 +13,31 @@ CREATE TABLE IF NOT EXISTS account
 
 CREATE TABLE IF NOT EXISTS location 
 (
-    location_id INTEGER PRIMARY KEY,
-    location_name VARCHAR(50)
+    location_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    location_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS workout 
 (
-    workout_id INTEGER PRIMARY KEY,
-    workout_name VARCHAR(50),
-    workout_date DATE,
-    duration INTEGER,
-    fk_user_id INTEGER,
-    fk_location_id INTEGER
+    workout_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    workout_name VARCHAR(50) NOT NULL,
+    workout_date DATE NOT NULL,
+    duration INTEGER NOT NULL,
+    fk_user_id INTEGER NOT NULL,
+    fk_location_id INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS exercise 
 (
-    exercise_id INTEGER PRIMARY KEY,
-    exercise_name VARCHAR(50),
-    exercise_description VARCHAR(255),
+    exercise_id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    exercise_name VARCHAR(50) NOT NULL,
+    exercise_description VARCHAR(255) NOT NULL,
     weight INTEGER,
     repetition INTEGER,
     number_of_sets INTEGER,
     time INTEGER,
     distance INTEGER,
-    fk_workout_id INTEGER
+    fk_workout_id INTEGER NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS includes

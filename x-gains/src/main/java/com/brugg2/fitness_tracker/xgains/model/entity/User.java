@@ -4,16 +4,44 @@ import java.util.Date;
 
 import com.brugg2.fitness_tracker.xgains.model.service.PasswordHashingService;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "account")
 public final class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "user_id")
     private int userID;
+
+    @Column(name = "account_type", nullable = false, length = 10)
     private String accountType;
+
+    @Column(name = "username", nullable = false, length = 50)
     private String username;
+
+    @Column(name = "email", nullable = false, length = 50)
     private String email;
+
+    @Column(name = "salt")
     private int salt;
+
+    @Column(name = "hashed_password", nullable = false, length = 255)
     private String hashedPassword;
+
+    @Column(name = "firstname", nullable = false, length = 255)
     private String firstname;
+
+    @Column(name = "lastname", nullable = false, length = 255)
     private String lastname;
+
+    @Column(name = "birthdate")
     private Date birthdate;
 
 
