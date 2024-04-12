@@ -36,11 +36,10 @@ CREATE TABLE IF NOT EXISTS exercise
     repetition INTEGER,
     number_of_sets INTEGER,
     time INTEGER,
-    distance INTEGER,
-    fk_workout_id INTEGER NOT NULL
+    distance INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS includes
+CREATE TABLE IF NOT EXISTS including
 (
     fk_workout_id INTEGER,
     fk_exercise_id INTEGER,
