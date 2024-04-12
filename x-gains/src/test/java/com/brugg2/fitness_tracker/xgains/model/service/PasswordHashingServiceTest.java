@@ -5,8 +5,9 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import org.junit.jupiter.api.Test;
 
 class PasswordHashingServiceTest {
+
     @Test
-    void saltShoudReturnDifferentRandomNumberEachTime() {
+    void saltShouldReturnDifferentRandomNumberEachTime() {
         int salt1 = PasswordHashingService.setSalt();
         int salt2 = PasswordHashingService.setSalt();
 

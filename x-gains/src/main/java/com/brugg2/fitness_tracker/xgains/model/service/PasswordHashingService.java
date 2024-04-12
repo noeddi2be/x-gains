@@ -5,6 +5,11 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Random;
 
+/**
+ * This Service is configured with static methods.
+ * @Service has been tried but did not work but unit-tests did not work
+ * as expected.
+ */
 public class PasswordHashingService {
 
     // Private constructor to prevent instantiation
