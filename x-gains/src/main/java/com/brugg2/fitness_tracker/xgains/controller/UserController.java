@@ -21,6 +21,7 @@ public class UserController {
 
     /**
      * Method to create a new user using http request and save to database.
+     * Input names of the attributes need to be the java class variable names.
      * @param user is input as a JSON object and converted to a Java object by Spring.
      * @return Returns the saved object in the database in JSON format.
      */

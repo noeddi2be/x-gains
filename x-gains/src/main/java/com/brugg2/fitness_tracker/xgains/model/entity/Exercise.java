@@ -57,23 +57,23 @@ public final class Exercise {
         this.exerciseDescription = exerciseDescription;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(Integer weight) {
         this.weight = weight;
     }
 
-    public void setRepetition(int repetition) {
+    public void setRepetition(Integer repetition) {
         this.repetition = repetition;
     }
 
-    public void setNumberOfSets(int numberOfSets) {
+    public void setNumberOfSets(Integer numberOfSets) {
         this.numberOfSets = numberOfSets;
     }
 
-    public void setTime(int time) {
+    public void setTime(Integer time) {
         this.time = time;
     }
 
-    public void setDistance(int distance) {
+    public void setDistance(Integer distance) {
         this.distance = distance;
     }
 
@@ -91,23 +91,23 @@ public final class Exercise {
         return this.exerciseDescription;
     }
 
-    public int getWeight() {
+    public Integer getWeight() {
         return this.weight;
     }
 
-    public int getRepetition() {
+    public Integer getRepetition() {
         return this.repetition;
     }
 
-    public int getNumberOfSets() {
+    public Integer getNumberOfSets() {
         return this.numberOfSets;
     }
 
-    public int getTime() {
+    public Integer getTime() {
         return this.time;
     }
 
-    public int getDistance() {
+    public Integer getDistance() {
         return this.distance;
     }
 

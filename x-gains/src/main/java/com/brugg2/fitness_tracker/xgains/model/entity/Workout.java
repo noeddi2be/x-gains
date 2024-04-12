@@ -39,9 +39,9 @@ public final class Workout {
 
     @ManyToOne
     @JoinColumn(name = "fk_location_id", nullable = false)
-    private Location location;
+    private Location locations;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "including", joinColumns = @JoinColumn(name = "fk_workout_id"), inverseJoinColumns = @JoinColumn(name = "fk_exercise_id"))
     private Set<Exercise> exercises;
 
@@ -67,8 +67,12 @@ public final class Workout {
     }
 
     public void setLocation(Location location) {
-        this.location = location;
+        this.locations = location;
     } 
+
+    public Set<Exercise> getExercises() {
+        return this.exercises;
+    }
 
 
     // Getters
@@ -93,7 +97,16 @@ public final class Workout {
     }
 
     public Location geLocation() {
-        return this.location;
+        return this.locations;
+    }
+
+    public void setExercises(Set<Exercise> newExercises) {
+        if (exercises == null) {
+            this.exercises = newExercises;
+        }
+        if (newExercises != null) {
+            exercises.addAll(newExercises);
+        }
     }
 
 }

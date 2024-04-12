@@ -61,3 +61,4 @@ ADD FOREIGN KEY
 (fk_user_id)
 REFERENCES
 account (user_id);
+
