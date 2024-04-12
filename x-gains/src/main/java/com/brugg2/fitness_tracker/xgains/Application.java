@@ -2,7 +2,6 @@ package com.brugg2.fitness_tracker.xgains;
 
 import java.sql.Date;
 
-import org.aspectj.internal.lang.annotation.ajcDeclareAnnotation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
