@@ -14,7 +14,7 @@ public final class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "location_id")
-    private int locationID;
+    private Integer locationID;
 
     @Column(name = "location_name", nullable = false, length = 50)
     private String locationName;

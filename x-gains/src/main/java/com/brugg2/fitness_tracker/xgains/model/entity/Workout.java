@@ -22,7 +22,7 @@ public final class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "workout_id")
-    private int workoutID;
+    private Integer workoutID;
 
     @Column(name = "workout_name", nullable = false, length = 50)
     private String workoutName;
@@ -31,7 +31,7 @@ public final class Workout {
     private Date workoutDate;
 
     @Column(name = "duration", nullable = false)
-    private int duration;
+    private Integer duration;
 
     @ManyToOne
     @JoinColumn(name = "fk_user_id", nullable = false)

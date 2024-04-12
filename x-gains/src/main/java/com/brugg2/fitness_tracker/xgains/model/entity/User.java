@@ -18,7 +18,7 @@ public final class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private int userID;
+    private Integer userID;
 
     @Column(name = "account_type", nullable = false, length = 10)
     private String accountType;
@@ -30,7 +30,7 @@ public final class User {
     private String email;
 
     @Column(name = "salt")
-    private int salt;
+    private Integer salt;
 
     @Column(name = "hashed_password", nullable = false, length = 255)
     private String hashedPassword;

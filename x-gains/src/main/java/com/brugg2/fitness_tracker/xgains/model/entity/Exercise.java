@@ -17,7 +17,7 @@ public final class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "exercise_id")
-    private int exerciseID;
+    private Integer exerciseID;
 
     @Column(name = "exercise_name", nullable = false, length = 50)
     private String exerciseName;
@@ -26,19 +26,19 @@ public final class Exercise {
     private String exerciseDescription;
 
     @Column(name = "weight")
-    private int weight;
+    private Integer weight;
 
     @Column(name = "repetition")
-    private int repetition;
+    private Integer repetition;
 
     @Column(name = "number_of_sets")
-    private int numberOfSets;
+    private Integer numberOfSets;
 
     @Column(name = "time")
-    private int time;
+    private Integer time;
 
     @Column(name = "distance")
-    private int distance;
+    private Integer distance;
 
     @ManyToMany(mappedBy = "exercises")
     private Set<Workout> workouts;
