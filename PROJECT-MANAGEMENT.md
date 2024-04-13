@@ -32,13 +32,13 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 
 #### ✅ API Endpoints & Services:
 ##### Login Screen view
-- [ ] Create account
+- [x] Create account
 - [ ] Delete account
 - [ ] Login
       
 ##### Dashboard view
 - [ ] Dashboard (weekly workouts, weekly exercises, weekly training time)
-- [ ] Create new workout
+- [x] Create new workout
 - [ ] View all workouts
 - [ ] View account
 - [ ] Logout
@@ -52,11 +52,12 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 
 ##### Create workout view
 - [ ] Dropdown for all available exercises
-- [ ] Save exercise to workout (values filled in form)
+- [x] Save exercise to workout (values filled in form)
 - [ ] Get all exercises from workout
 - [ ] Discard (delete exercise from workout)
 - [ ] Dropdown for gym list
-- [ ] (Timer)
+- [ ] (Timer) - only do when enough time, frontent possible? Set manual.
+
 
 ##### All workouts view
 - [ ] Get all workouts for user
