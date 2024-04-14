@@ -31,18 +31,39 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - [x] Create Basic Spring Boot application with a webserver
 
 #### ✅ API Endpoints & Services:
-- [ ] Create account
+##### Login Screen view
+- [x] Create account
 - [ ] Delete account
 - [ ] Login
-- [ ] New workout
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
-- [ ]
+      
+##### Dashboard view
+- [ ] Dashboard (weekly workouts, weekly exercises, weekly training time)
+- [x] Create new workout
+- [ ] View all workouts
+- [ ] View account
+- [ ] Logout
+
+##### Account view
+- [ ] View account details
+- [ ] Delete account
+
+##### Create Account view
+- [ ] Enter all details and create account
+
+##### Create workout view
+- [ ] Dropdown for all available exercises
+- [x] Save exercise to workout (values filled in form)
+- [ ] Get all exercises from workout
+- [ ] Discard (delete exercise from workout)
+- [ ] Dropdown for gym list
+- [ ] (Timer) - only do when enough time, frontent possible? Set manual.
+
+
+##### All workouts view
+- [ ] Get all workouts for user
+- [ ] Get all exercises for workout
+- [ ] Delete workout
+
 
 ## 🧪 Testing
 
