@@ -52,11 +52,10 @@ public final class User {
 
     /**
      * Sets the account type of a user. For simplicity the user account type is
-     * specified
-     * with a number. Only the right combination of numbers will result in admin.
-     * Chose -> 12345678 to set admin.
+     * specified with a number. Only the right combination of numbers will result in admin.
+     * Chose -> 123456789 to set admin.
      * -> For simplicity, the admin role will not be supported in the app. Admin
-     * and user will have the same functionality.
+     * and user will have the same functionality during first iteration.
      * @param accountType all numbers except the special number result in user.
      */
     public void setAccountType(int accountType) {
