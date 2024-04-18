@@ -37,4 +37,23 @@ public class UserController {
         return ResponseEntity.ok(user);
     }
 
+    /**
+     * Method to remove a new user using http request and save to database.
+     * Input names of the attributes need to be the java class variable names.
+     * Cannot delete user without fk references (workouts) are deleted as well.
+     * @param user is input as a JSON object and converted to a Java object by Spring.
+     * @return Returns the deleted object in the database in JSON format.
+     */
+    @PostMapping("/delete")
+    public ResponseEntity deleteUser(@RequestBody User user) {
+        try {
+            userService.deleteUser(user);
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
+
+        }
+        return ResponseEntity.ok(user);
+    }
+
 }

@@ -2,6 +2,8 @@ package com.brugg2.fitness_tracker.xgains.model.entity;
 
 import java.util.Date;
 
+import org.springframework.stereotype.Component;
+
 import com.brugg2.fitness_tracker.xgains.model.service.PasswordHashingService;
 
 import jakarta.persistence.Column;
@@ -13,6 +15,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "account")
+@Component
 public final class User {
 
     @Id
