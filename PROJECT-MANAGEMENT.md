@@ -53,15 +53,15 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 ##### Create workout view
 - [ ] Dropdown for all available exercises
 - [x] Save exercise to workout (values filled in form)
-- [ ] Get all exercises from workout
+- [x] Get all exercises from workout
 - [ ] Discard (delete exercise from workout)
 - [ ] Dropdown for gym list
 - [ ] (Timer) - only do when enough time, frontent possible? Set manual.
 
 
 ##### All workouts view
-- [ ] Get all workouts for user
-- [ ] Get all exercises for workout
+- [x] Get all workouts for user
+- [x] Get all exercises for workout
 - [ ] Delete workout
 
 
