@@ -8,7 +8,6 @@ import com.brugg2.fitness_tracker.xgains.model.service.UserService;
 import com.brugg2.fitness_tracker.xgains.model.service.WorkoutService;
 
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -49,12 +48,21 @@ public class WorkoutController {
         return ResponseEntity.ok(workout);
     }
 
+    /**
+     * Returns all workouts as a Json object for the specified user.
+     * 
+     * @param userID int userID will be converted to a Java object by Spring.
+     * @return Returns all workouts or HttpStatus Not_Found.
+     */
     @GetMapping("/all")
     public ResponseEntity getAllWorkouts(@RequestParam int userID) {
         try {
-            User user = userService.getUserbyId(userID);
-            List<Workout> workouts = workoutService.getAllWorkouts(user);
-            return ResponseEntity.ok(workouts);
+            User user = userService.getUserById(userID);
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+            }
+
+            return ResponseEntity.ok(workoutService.getAllWorkouts(user));
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());

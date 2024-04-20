@@ -13,7 +13,7 @@ import com.brugg2.fitness_tracker.xgains.model.entity.Workout;
 public interface WorkoutRepository extends JpaRepository<Workout, Integer> {
 
     /**
-     * Method without body - handled by spring framework through annotation. 
+     * Abstract method. Handled by spring framework. 
      * When the method is called, it executes a manual query.
      * The query is specified in the :userId parameter. JPA supports named
      * parameters -> ":param"
