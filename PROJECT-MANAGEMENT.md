@@ -33,7 +33,7 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 #### ✅ API Endpoints & Services:
 ##### Login Screen view
 - [x] Create account
-- [ ] Delete account
+- [x] Delete account
 - [ ] Login
       
 ##### Dashboard view
