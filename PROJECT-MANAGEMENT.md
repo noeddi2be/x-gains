@@ -44,11 +44,11 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - [ ] Logout
 
 ##### Account view
-- [ ] View account details
-- [ ] Delete account
+- [x] View account details
+- [x] Delete account
 
 ##### Create Account view
-- [ ] Enter all details and create account
+- [x] Enter all details and create account
 
 ##### Create workout view
 - [ ] Dropdown for all available exercises
