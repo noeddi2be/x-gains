@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS including
     fk_workout_id INTEGER,
     fk_exercise_id INTEGER,
     FOREIGN KEY (fk_workout_id) REFERENCES workout (workout_id),
-    FOREIGN KEY (fk_exercise_id) REFERENCES exercise (exercise_id),
+    FOREIGN KEY (fk_exercise_id) REFERENCES exercise (exercise_id), 
     PRIMARY KEY (fk_workout_id, fk_exercise_id)
 );
 
@@ -61,4 +61,3 @@ ADD FOREIGN KEY
 (fk_user_id)
 REFERENCES
 account (user_id);
-

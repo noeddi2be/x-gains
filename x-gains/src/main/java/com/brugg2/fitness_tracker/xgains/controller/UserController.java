@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 public class UserController {
 
     @Autowired
-    private UserService userService;
+    UserService userService;
 
     /**
      * Method to create a new user using http request and save to database.
@@ -25,13 +25,16 @@ public class UserController {
      * @param user is input as a JSON object and converted to a Java object by Spring.
      * @return Returns the saved object in the database in JSON format.
      */
+    @Autowired
     @PostMapping("/new")
     public ResponseEntity addUser(@RequestBody User user) {
         try {
+           
+            
             userService.createUser(user);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Something went wrong!");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
 
         }
         return ResponseEntity.ok(user);
