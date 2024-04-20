@@ -39,7 +39,7 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 ##### Dashboard view
 - [ ] Dashboard (weekly workouts, weekly exercises, weekly training time)
 - [x] Create new workout
-- [ ] View all workouts
+- [x] View all workouts
 - [ ] View account
 - [ ] Logout
 
