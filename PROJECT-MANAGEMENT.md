@@ -40,15 +40,15 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - [ ] Dashboard (weekly workouts, weekly exercises, weekly training time)
 - [x] Create new workout
 - [x] View all workouts
-- [ ] View account
+- [x] View account
 - [ ] Logout
 
 ##### Account view
-- [ ] View account details
-- [ ] Delete account
+- [x] View account details
+- [x] Delete account
 
 ##### Create Account view
-- [ ] Enter all details and create account
+- [x] Enter all details and create account
 
 ##### Create workout view
 - [ ] Dropdown for all available exercises
