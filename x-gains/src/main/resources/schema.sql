@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS account
+/* CREATE TABLE IF NOT EXISTS account
 (
     user_id INTEGER AUTO_INCREMENT PRIMARY KEY,
     account_type VARCHAR(10) NOT NULL,
@@ -61,3 +61,4 @@ ADD FOREIGN KEY
 (fk_user_id)
 REFERENCES
 account (user_id);
+ */

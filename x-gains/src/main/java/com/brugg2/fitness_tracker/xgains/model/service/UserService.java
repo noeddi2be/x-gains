@@ -28,7 +28,7 @@ public class UserService {
      * @param user User object.
      */
     public void deleteUser(User user) {
-        List<Workout> workouts = workoutRepository.findWorkoutsByUserId(user.getUserID());
+        List<Workout> workouts = workoutRepository.findWorkoutsByUserId(user.getUserId());
         for (int i = 0; i < workouts.size(); i++) {
             workoutRepository.delete(workouts.get(i));
         }

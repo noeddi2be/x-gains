@@ -3,6 +3,7 @@ package com.brugg2.fitness_tracker.xgains.model.entity;
 import java.util.Date;
 import java.util.Set;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -22,7 +23,7 @@ public final class Workout {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "workout_id")
-    private Integer workoutID;
+    private Integer workoutId;
 
     @Column(name = "workout_name", nullable = false, length = 50)
     private String workoutName;
@@ -39,15 +40,15 @@ public final class Workout {
 
     @ManyToOne
     @JoinColumn(name = "fk_location_id", nullable = false)
-    private Location locations;
+    private Location location;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "including", joinColumns = @JoinColumn(name = "fk_workout_id"), inverseJoinColumns = @JoinColumn(name = "fk_exercise_id"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+    @JoinTable(name = "workouts_exercises", joinColumns = @JoinColumn(name = "fk_workout_id"), inverseJoinColumns = @JoinColumn(name = "fk_exercise_id"))
     private Set<Exercise> exercises;
 
     // Setters
-    public void setWorkoutID(int workoutID) {
-        this.workoutID = workoutID;
+    public void setWorkoutID(int workoutId) {
+        this.workoutId = workoutId;
     }
 
     public void setWorkoutName(String workoutName) {
@@ -67,7 +68,7 @@ public final class Workout {
     }
 
     public void setLocation(Location location) {
-        this.locations = location;
+        this.location = location;
     } 
 
     public Set<Exercise> getExercises() {
@@ -76,8 +77,8 @@ public final class Workout {
 
 
     // Getters
-    public int getWorkoutID() {
-        return this.workoutID;
+    public int getWorkoutId() {
+        return this.workoutId;
     }
 
     public String getWorkoutName() {
@@ -97,7 +98,7 @@ public final class Workout {
     }
 
     public Location geLocation() {
-        return this.locations;
+        return this.location;
     }
 
     public void setExercises(Set<Exercise> newExercises) {

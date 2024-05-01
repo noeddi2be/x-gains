@@ -42,7 +42,7 @@ VALUES
     (19, 'Box Jumps', 'Plyometric exercise using a box or platform', 0, 10, 3, NULL, NULL);
 
 -- Assign Exercises to Workouts
-INSERT INTO including (fk_workout_id, fk_exercise_id)
+INSERT INTO workouts_exercises (fk_workout_id, fk_exercise_id)
 VALUES 
     (1, 1), (1, 2), (1, 3), -- User 1's Morning Workout in Brugg
     (2, 4), (2, 5), (2, 6), -- User 2's Afternoon Workout in Basel

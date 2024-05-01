@@ -20,7 +20,7 @@ public class WorkoutService {
     }
 
     public List<Workout> getAllWorkouts(User user) {
-        return workoutRepository.findWorkoutsByUserId(user.getUserID());
+        return workoutRepository.findWorkoutsByUserId(user.getUserId());
     }
 
 }

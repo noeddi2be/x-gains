@@ -14,14 +14,14 @@ public final class Location {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "location_id")
-    private Integer locationID;
+    private Integer locationId;
 
     @Column(name = "location_name", nullable = false, length = 50)
     private String locationName;
 
     // Setters
-    public void setLocationID(int locationID) {
-        this.locationID = locationID;
+    public void setLocationID(int locationId) {
+        this.locationId = locationId;
     }
 
     public void setLocationName(String locationName) {
@@ -29,8 +29,8 @@ public final class Location {
     }
 
     // Getters
-    public int getLocationID() {
-        return this.locationID;
+    public int getLocationId() {
+        return this.locationId;
     }
 
     public String getLocationName() {
