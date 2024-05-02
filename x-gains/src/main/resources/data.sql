@@ -1,9 +1,9 @@
 -- Insert Users
 INSERT INTO account (user_id, account_type, username, email, salt, hashed_password, firstname, lastname, birthdate)
 VALUES 
-    (1, 'user', 'Emy', 'emily.sharp@gmail.com', 31296878, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Emily', 'Sharp', '1979-10-12'),
-    (2, 'user', 'Pete', 'pete.david@home.com', 13058720, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Pete', 'Davidson', '1984-03-01'),
-    (3, 'user', 'GigaChad50', 'gg5@icloud.com', 10238509, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Bill', 'Gates', '1960-05-02');
+    (9999, 'user', 'Emy', 'emily.sharp@gmail.com', 31296878, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Emily', 'Sharp', '1979-10-12'),
+    (9998, 'user', 'Pete', 'pete.david@home.com', 13058720, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Pete', 'Davidson', '1984-03-01'),
+    (9997, 'user', 'GigaChad50', 'gg5@icloud.com', 10238509, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Bill', 'Gates', '1960-05-02');
 
 -- Insert Locations
 INSERT INTO location (location_id, location_name) VALUES (1, 'Brugg'), (2, 'Basel'), (3, 'Olten');
@@ -11,12 +11,12 @@ INSERT INTO location (location_id, location_name) VALUES (1, 'Brugg'), (2, 'Base
 -- Insert Workouts
 INSERT INTO workout (workout_id, workout_name, workout_date, duration, fk_user_id, fk_location_id)
 VALUES 
-    (1, 'Morning Workout', '2024-04-01', 60, 1, 1), -- User 1 in Brugg
-    (2, 'Afternoon Workout', '2024-04-01', 60, 2, 2), -- User 2 in Basel
-    (3, 'Evening Workout', '2024-04-01', 60, 3, 3), -- User 3 in Olten
-    (4, 'Morning Workout', '2024-04-08', 60, 1, 1), -- User 1 in Brugg
-    (5, 'Afternoon Workout', '2024-04-08', 60, 2, 2), -- User 2 in Basel
-    (6, 'Evening Workout', '2024-04-08', 60, 3, 3); -- User 3 in Olten
+    (1, 'Morning Workout', '2024-04-01', 60, 9999, 1), -- User 1 in Brugg
+    (2, 'Afternoon Workout', '2024-04-01', 60, 9998, 2), -- User 2 in Basel
+    (3, 'Evening Workout', '2024-04-01', 60, 9997, 3), -- User 3 in Olten
+    (4, 'Morning Workout', '2024-04-08', 60, 9999, 1), -- User 1 in Brugg
+    (5, 'Afternoon Workout', '2024-04-08', 60, 9998, 2), -- User 2 in Basel
+    (6, 'Evening Workout', '2024-04-08', 60, 9997, 3); -- User 3 in Olten
 
 -- Insert Exercises
 INSERT INTO exercise (exercise_id, exercise_name, exercise_description, weight, repetition, number_of_sets, time, distance)
