@@ -21,9 +21,9 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Integer> {
      * @return java.util.List with Exercise objects.
      */
     @Query(value = 
-            "SELECT * FROM including " +
-            "LEFT JOIN exercise ON including.fk_exercise_id = exercise.exercise_id " +
-            "WHERE including.fk_workout_id = :workoutId", nativeQuery = true)
+            "SELECT * FROM workouts_exercises " +
+            "LEFT JOIN exercise ON workouts_exercises.fk_exercise_id = exercise.exercise_id " +
+            "WHERE workouts_exercises.fk_workout_id = :workoutId", nativeQuery = true)
     List<Exercise> findExercisesByWorkoutId(@Param("workoutId") int workoutId);
 
 }
