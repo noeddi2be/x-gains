@@ -17,7 +17,7 @@ public final class Exercise {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "exercise_id")
-    private Integer exerciseID;
+    private Integer exerciseId;
 
     @Column(name = "exercise_name", nullable = false, length = 50)
     private String exerciseName;
@@ -45,8 +45,8 @@ public final class Exercise {
 
 
     // Setters
-    public void setExerciseID(int exerciseID) {
-        this.exerciseID = exerciseID;
+    public void setExerciseID(int exerciseId) {
+        this.exerciseId = exerciseId;
     }
 
     public void setExerciseName(String exerciseName) {
@@ -79,8 +79,8 @@ public final class Exercise {
 
 
     // Getters
-    public int getExerciseID() {
-        return this.exerciseID;
+    public int getExerciseId() {
+        return this.exerciseId;
     }
 
     public String getExerciseName() {

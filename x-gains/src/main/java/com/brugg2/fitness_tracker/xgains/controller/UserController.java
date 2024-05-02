@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -57,16 +58,17 @@ public class UserController {
      *             converted to a Json object. E.g. userID = 1.
      * @return Returns the deleted object in the database in JSON format.
      */
-    @PostMapping("/delete")
-    public ResponseEntity deleteUser(@RequestBody User user) {
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteUser(@RequestBody String email) {
+
         try {
-            userService.deleteUser(user);
+            userService.deleteUser(userService.getUserByEmail(email));
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
 
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(userService.getUserByEmail(email));
     }
 
     /**

@@ -21,7 +21,7 @@ public final class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
-    private Integer userID;
+    private Integer userId;
 
     @Column(name = "account_type", nullable = false, length = 10)
     private String accountType;
@@ -35,7 +35,7 @@ public final class User {
     @Column(name = "salt")
     private Integer salt;
 
-    @Column(name = "hashed_password", nullable = false, length = 255)
+    @Column(name = "hashed_password", nullable = true, length = 255)
     private String hashedPassword;
 
     @Column(name = "firstname", nullable = false, length = 255)
@@ -50,7 +50,7 @@ public final class User {
 
     // Setters
     public void setUserID(int userID) {
-        this.userID = userID;
+        this.userId = userID;
     }
 
     /**
@@ -100,8 +100,8 @@ public final class User {
 
 
     // Getters
-    public int getUserID() {
-        return this.userID;
+    public int getUserId() {
+        return this.userId;
     }
 
     public String getAccountType() {
