@@ -5,6 +5,10 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brugg2.fitness_tracker.xgains.model.dao.UserRepository;
 import com.brugg2.fitness_tracker.xgains.model.entity.User;
 import com.brugg2.fitness_tracker.xgains.model.service.UserService;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -58,23 +62,43 @@ public class UserController {
      *             converted to a Json object. E.g. userID = 1.
      * @return Returns the deleted object in the database in JSON format.
      */
-    @DeleteMapping("/delete")
+    @DeleteMapping(value = "/delete", consumes = "application/json")
     public ResponseEntity deleteUser(@RequestBody String email) {
 
+        String extractedEmail;
+
         try {
-            userService.deleteUser(userService.getUserByEmail(email));
+            ObjectMapper objectMapper = new ObjectMapper();
+            JsonNode jsonNode = objectMapper.readTree(email);
+            extractedEmail = jsonNode.get("email").asText();
+        }
+
+        catch (IOException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request body");
+        }
+
+        User user = userService.getUserByEmail(extractedEmail);
+
+        if (user == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found with email: " + email);
+        }
+
+        try {
+            userService.deleteUser(user);
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
 
         }
-        return ResponseEntity.ok(userService.getUserByEmail(email));
+        return ResponseEntity.ok(user);
     }
 
     /**
      * Method to view user details.
      * Input is the prinamry key userID.
      * Also returns the hashed password :D. No bueno.
+     * 
      * @param userID int
      * @return User object in Json format.
      */
@@ -91,6 +115,5 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
         }
     }
-
 
 }
