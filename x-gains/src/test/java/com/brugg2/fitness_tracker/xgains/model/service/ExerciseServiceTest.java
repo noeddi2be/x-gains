@@ -17,9 +17,6 @@ public class ExerciseServiceTest {
     @Autowired
     private ExerciseService exerciseService;
 
-    @Autowired
-    private ExerciseRepository exerciseRepository;
-
     @Test
     void testGetAllExercisesForWorkout() {
 

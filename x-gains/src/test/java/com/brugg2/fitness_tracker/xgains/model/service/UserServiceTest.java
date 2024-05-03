@@ -1,10 +1,7 @@
 package com.brugg2.fitness_tracker.xgains.model.service;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.Date;
 
@@ -68,10 +65,10 @@ public class UserServiceTest {
     void testGetUserByEmail() {
 
         // Arrange
-        User userMustExist = userService.getUserByEmail("emily.sharp@gmail.com");
+        User emailMustExist = userService.getUserByEmail("emily.sharp@gmail.com");
 
         // Assert user exists
-        assertNotNull(userMustExist);
+        assertNotNull(emailMustExist);
 
     }
 
@@ -79,10 +76,10 @@ public class UserServiceTest {
     void testGetUserById() {
 
         // Arrange
-        User userMustExist = userService.getUserById(9999);
+        User idMustExist = userService.getUserById(9998);
 
         // Assert user exists
-        assertNotNull(userMustExist);
+        assertNotNull(idMustExist);
 
     }
 }
