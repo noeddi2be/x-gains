@@ -10,6 +10,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,40 +59,33 @@ public class UserController {
      * Input names of the attributes need to be the java class variable names.
      * Cannot delete user without fk references (workouts) are deleted as well.
      * 
-     * @param user is input as a JSON object and converted to a Java object by
-     *             Spring. Also a field of the user can be passed which will be
-     *             converted to a Json object. E.g. userID = 1.
+     * @param json input as a JSON object and converted to a String.
+     *             The json to be passed needs to have the key: email, value
+     *             "email".
      * @return Returns the deleted object in the database in JSON format.
      */
-    @DeleteMapping(value = "/delete", consumes = "application/json")
-    public ResponseEntity deleteUser(@RequestBody String email) {
+    @DeleteMapping(value = "/delete")
+    public ResponseEntity deleteUser(@RequestBody String json) {
 
-        String extractedEmail;
-
-        try {
-            ObjectMapper objectMapper = new ObjectMapper();
-            JsonNode jsonNode = objectMapper.readTree(email);
-            extractedEmail = jsonNode.get("email").asText();
-        }
-
-        catch (IOException e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid request body");
-        }
-
-        User user = userService.getUserByEmail(extractedEmail);
-
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found with email: " + email);
-        }
+        JSONObject jsonObject;
+        String email;
+        User user;
 
         try {
+            jsonObject = new JSONObject(json);
+            email = jsonObject.getString("email");
+            user = userService.getUserByEmail(email);
+
+            if (user == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
+            }
+
             userService.deleteUser(user);
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
-
         }
+
         return ResponseEntity.ok(user);
     }
 

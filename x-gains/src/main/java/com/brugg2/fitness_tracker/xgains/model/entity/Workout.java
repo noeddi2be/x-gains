@@ -34,7 +34,7 @@ public final class Workout {
     @Column(name = "duration", nullable = false)
     private Integer duration;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "fk_user_id", nullable = false)
     private User user;
 

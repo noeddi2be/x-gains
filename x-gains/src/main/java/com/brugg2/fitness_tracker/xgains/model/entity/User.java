@@ -2,15 +2,18 @@ package com.brugg2.fitness_tracker.xgains.model.entity;
 
 import java.util.Date;
 
+import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.brugg2.fitness_tracker.xgains.model.service.PasswordHashingService;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -46,6 +49,10 @@ public final class User {
 
     @Column(name = "birthdate")
     private Date birthdate;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+    private List<Workout> workouts;
+
 
 
     // Setters
