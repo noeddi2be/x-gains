@@ -40,7 +40,6 @@ public class UserController {
      *             Spring.
      * @return Returns the saved object in the database in JSON format.
      */
-    @Autowired
     @PostMapping("/new")
     public ResponseEntity addUser(@RequestBody User user) {
         try {
@@ -51,7 +50,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
 
         }
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(user.getEmail());
     }
 
     /**
@@ -64,7 +63,7 @@ public class UserController {
      *             "email".
      * @return Returns the deleted object in the database in JSON format.
      */
-    @DeleteMapping(value = "/delete")
+    @DeleteMapping("/delete")
     public ResponseEntity deleteUser(@RequestBody String json) {
 
         JSONObject jsonObject;
@@ -86,7 +85,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
         }
 
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok(user.getEmail());
     }
 
     /**
@@ -97,17 +96,26 @@ public class UserController {
      * @param userID int
      * @return User object in Json format.
      */
-    @GetMapping("account")
-    public ResponseEntity getAccountDetails(@RequestParam int userID) {
+    @GetMapping("/account")
+    public ResponseEntity getAccountDetails(@RequestParam String json) {
+
+        JSONObject jsonObject;
+        int userID;
+        User user;
+
+
         try {
-            User user = userService.getUserById(userID);
+            jsonObject = new JSONObject(json);
+            userID = jsonObject.getInt("userID");
+            user = userService.getUserById(userID);
+
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
             }
             return ResponseEntity.ok(user);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString() + "test");
         }
     }
 
