@@ -96,8 +96,8 @@ public class UserController {
      * @param userID int
      * @return User object in Json format.
      */
-    @GetMapping("/account")
-    public ResponseEntity getAccountDetails(@RequestParam String json) {
+    @PostMapping("/account")
+    public ResponseEntity getAccountDetails(@RequestBody String json) {
 
         JSONObject jsonObject;
         int userID;
@@ -112,10 +112,19 @@ public class UserController {
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
             }
-            return ResponseEntity.ok(user);
+            jsonObject.clear();
+            jsonObject.put("userID", user.getUserId());
+            jsonObject.put("accountType", user.getAccountType());
+            jsonObject.put("username", user.getUsername());
+            jsonObject.put("firstname", user.getFirstname());
+            jsonObject.put("lastname", user.getLastname());
+            jsonObject.put("birthdate", user.getBirthdate());
+            String userdata = jsonObject.toString(4);
+
+            return ResponseEntity.ok(userdata);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString() + "test");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString()); 
         }
     }
 
