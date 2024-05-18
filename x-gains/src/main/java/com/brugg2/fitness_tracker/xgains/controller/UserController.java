@@ -57,15 +57,13 @@ public class UserController {
     @DeleteMapping("/delete")
     public ResponseEntity deleteUser(@RequestBody String json) {
 
-        JSONObject jsonObject;
-        String email;
         User user;
 
         try {
-            jsonObject = new JSONObject(json);
-            email = jsonObject.getString("email");
-            user = userService.getUserByEmail(email);
+            JSONObject jsonObject = new JSONObject(json);
+            String email = jsonObject.getString("email");
 
+            user = userService.getUserByEmail(email);
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
             }

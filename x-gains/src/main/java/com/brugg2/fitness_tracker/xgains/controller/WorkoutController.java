@@ -7,12 +7,14 @@ import com.brugg2.fitness_tracker.xgains.model.entity.Workout;
 import com.brugg2.fitness_tracker.xgains.model.service.UserService;
 import com.brugg2.fitness_tracker.xgains.model.service.WorkoutService;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -67,5 +69,14 @@ public class WorkoutController {
 
         }
     }
+
+    @DeleteMapping("/delete")
+    public void deleteWorkout(@RequestBody String workoutId) {
+        workoutService.deleteWorkout(
+            new JSONObject(workoutId)
+            .getInt("workoutId")
+        );
+    }
+
 
 }

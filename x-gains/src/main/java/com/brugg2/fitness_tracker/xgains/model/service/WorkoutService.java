@@ -23,4 +23,8 @@ public class WorkoutService {
         return workoutRepository.findWorkoutsByUserId(user.getUserId());
     }
 
+    public void deleteWorkout(int workoutId) {
+        workoutRepository.deleteById(workoutId);
+    }
+
 }
