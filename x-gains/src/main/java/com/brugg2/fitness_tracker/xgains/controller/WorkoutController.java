@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @RestController
 @RequestMapping("/api/workout")
@@ -50,14 +49,19 @@ public class WorkoutController {
 
     /**
      * Returns all workouts as a Json object for the specified user.
+     * Input Json for the api call needs to contain int value with the user. 
      * 
-     * @param userID int userID will be converted to a Java object by Spring.
+     * @param json method looks for 'userId' which will be extracted from the Json object.
      * @return Returns all workouts or HttpStatus Not_Found.
      */
     @GetMapping("/all")
-    public ResponseEntity getAllWorkouts(@RequestParam int userID) {
+    public ResponseEntity getAllWorkouts(@RequestBody String json) {
+
         try {
+            JSONObject jsonObject = new JSONObject(json);
+            int userID = jsonObject.getInt("userId");
             User user = userService.getUserById(userID);
+
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
             }
@@ -70,6 +74,12 @@ public class WorkoutController {
         }
     }
 
+    /**
+     * Deletes a specific workout.
+     * Input is required in json format.
+     * 
+     * @param workoutId method looks for 'workoutId' in the json payload.
+    */
     @DeleteMapping("/delete")
     public void deleteWorkout(@RequestBody String workoutId) {
         workoutService.deleteWorkout(

@@ -26,7 +26,7 @@ public class UserController {
     UserRepository userRepository;
 
     /**
-     * Method to create a new user using http request and save to database.
+     * Method to create a new user saves it to the database.
      * Input names of the attributes need to be the java class variable names.
      * 
      * @param user is input as a JSON object and converted to a Java object by
@@ -35,8 +35,8 @@ public class UserController {
      */
     @PostMapping("/new")
     public ResponseEntity addUser(@RequestBody User user) {
+        
         try {
-
             userService.createUser(user);
 
         } catch (Exception e) {
@@ -47,11 +47,10 @@ public class UserController {
     }
 
     /**
-     * Method to remove a new user using http request and save to database.
+     * Method to remove a new user from the database.
+     * Input as a json object and converted to a String.
      * 
-     * @param json input as a JSON object and converted to a String.
-     *             The json to be passed needs to have the key: email, value
-     *             "email".
+     * @param json Key: "email", Value: "user@email.com"
      * @return Returns the deleted object in the database in JSON format.
      */
     @DeleteMapping("/delete")
@@ -79,8 +78,9 @@ public class UserController {
 
     /**
      * Method to view user details.
+     * Input is a json payload containing the user ID.
      * 
-     * @param userID int
+     * @param userID json -> Key: "userID", Value: 9999
      * @return User object in Json format.
      */
     @PostMapping("/account")
