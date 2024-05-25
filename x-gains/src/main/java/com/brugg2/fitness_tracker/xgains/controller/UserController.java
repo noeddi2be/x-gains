@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequestMapping("/api/user")
@@ -83,7 +84,7 @@ public class UserController {
      * @param userID json -> Key: "userID", Value: 9999
      * @return User object in Json format.
      */
-    @PostMapping("/account")
+    @GetMapping("/account")
     public ResponseEntity getAccountDetails(@RequestBody String json) {
 
         JSONObject jsonObject;

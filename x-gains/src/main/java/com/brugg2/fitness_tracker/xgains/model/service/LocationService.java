@@ -1,5 +1,7 @@
 package com.brugg2.fitness_tracker.xgains.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,5 +17,10 @@ public class LocationService {
     public void createLocation(Location location) {
         locationRepository.save(location);
     }
+
+    public List<Location> returnAllLocations() {
+        return locationRepository.returnAllLocations();
+    }
+
 
 }

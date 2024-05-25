@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.GetMapping;
+
 
 @RestController
 @RequestMapping("/api/location")
@@ -36,6 +38,21 @@ public class LocationController {
 
         }
         return ResponseEntity.ok(location);
+    }
+
+    /**
+     * Method to return locations.
+     * 
+     * @return Returns a List object with all locations.
+     */
+    @GetMapping("all")
+    public ResponseEntity getAllLocations() {
+        try {
+            return ResponseEntity.ok(locationService.returnAllLocations());
+        
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Something went wrong!");
+        }
     }
 
 }
