@@ -28,4 +28,9 @@ public interface WorkoutRepository extends JpaRepository<Workout, Integer> {
             """, nativeQuery = true)
     List<Workout> findWorkoutsByUserId(@Param("userId") int userId);
 
+    @Query(value = """
+        SELECT * FROM workout
+        WHERE workout_id = :workoutId
+            """, nativeQuery = true)
+    Workout getWorkoutById(@Param("workoutId") int workoutId);
 }

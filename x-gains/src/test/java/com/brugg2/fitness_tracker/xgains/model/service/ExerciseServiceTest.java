@@ -21,17 +21,14 @@ public class ExerciseServiceTest {
     void testGetAllExercisesForWorkout() {
 
         // Arrange
-        int workoutId = 9998;
+        int workoutId = 9997;
 
         // Act
         List<Exercise> exercisesAssert = exerciseService.getAllExercisesForWorkout(workoutId);
 
-        // Assert if list of known exercises coinsides with known exercises from
-        // testdata.
-        assertEquals(3, exercisesAssert.size());
-        assertEquals(9996, exercisesAssert.get(0).getExerciseId());
-        assertEquals(9995, exercisesAssert.get(1).getExerciseId());
-        assertEquals(9994, exercisesAssert.get(2).getExerciseId());
+        // Assert if list of known exercises coinsides with known exercises from testdata.
+        assertEquals(1, exercisesAssert.size());
+        assertEquals(9992, exercisesAssert.get(0).getExerciseId());
 
     }
 

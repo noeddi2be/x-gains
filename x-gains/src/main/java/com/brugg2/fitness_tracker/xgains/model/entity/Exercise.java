@@ -1,13 +1,12 @@
 package com.brugg2.fitness_tracker.xgains.model.entity;
 
-import java.util.Set;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -40,8 +39,9 @@ public final class Exercise {
     @Column(name = "distance")
     private Integer distance;
 
-    @ManyToMany(mappedBy = "exercises")
-    private Set<Workout> workouts;
+    @ManyToOne
+    @JoinColumn(name = "fk_workout_id", nullable = false)
+    private Workout workout;
 
 
     // Setters
@@ -75,6 +75,10 @@ public final class Exercise {
 
     public void setDistance(Integer distance) {
         this.distance = distance;
+    }
+
+    public void setWorkout(Workout workout) {
+        this.workout = workout;
     }
 
 
@@ -111,5 +115,8 @@ public final class Exercise {
         return this.distance;
     }
 
+    public Workout getWorkout() {
+        return workout;
+    }
 
 }

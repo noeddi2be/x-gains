@@ -12,20 +12,22 @@ import com.brugg2.fitness_tracker.xgains.model.entity.Exercise;
 @Repository
 public interface ExerciseRepository extends JpaRepository<Exercise, Integer> {
 
-   /**
-     * Abstract method. Handled by spring framework. 
-     * When the method is called, it executes a manual query.
-     * The query is specified in the :userId parameter. JPA supports named
-     * parameters -> ":param"
-     * @param userId integer primary key workout.
-     * @return java.util.List with Exercise objects.
-     */
-    @Query(value = 
-            "SELECT * FROM workouts_exercises " +
-            "LEFT JOIN exercise ON workouts_exercises.fk_exercise_id = exercise.exercise_id " +
-            "WHERE workouts_exercises.fk_workout_id = :workoutId", nativeQuery = true)
-    List<Exercise> findExercisesByWorkoutId(@Param("workoutId") int workoutId);
+        /**
+         * Abstract method. Handled by spring framework.
+         * When the method is called, it executes a manual query.
+         * The query is specified in the :userId parameter. JPA supports named
+         * parameters -> ":param"
+         * 
+         * @param userId integer primary key workout.
+         * @return java.util.List with Exercise objects.
+         */
+        @Query(value = "SELECT * FROM exercise " +
+                        "WHERE fk_workout_id = :workoutId", nativeQuery = true)
+        List<Exercise> findExercisesByWorkoutId(@Param("workoutId") int workoutId);
 
+        @Query(value = """
+                        SELECT * FROM exercise
+                        WHERE exercise.exercise_id = :exerciseId
+                        """, nativeQuery = true)
+        Exercise findExerciseById(@Param("exerciseId") int exerciseId);
 }
-
-    

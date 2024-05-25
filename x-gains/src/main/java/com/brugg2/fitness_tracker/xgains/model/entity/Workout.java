@@ -1,7 +1,7 @@
 package com.brugg2.fitness_tracker.xgains.model.entity;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -11,9 +11,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -42,9 +41,8 @@ public final class Workout {
     @JoinColumn(name = "fk_location_id", nullable = false)
     private Location location;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
-    @JoinTable(name = "workouts_exercises", joinColumns = @JoinColumn(name = "fk_workout_id"), inverseJoinColumns = @JoinColumn(name = "fk_exercise_id"))
-    private Set<Exercise> exercises;
+    @OneToMany(mappedBy = "workout", cascade = CascadeType.REMOVE)
+    private List<Exercise> exercises;
 
     // Setters
     public void setWorkoutID(int workoutId) {
@@ -71,11 +69,6 @@ public final class Workout {
         this.location = location;
     } 
 
-    public Set<Exercise> getExercises() {
-        return this.exercises;
-    }
-
-
     // Getters
     public int getWorkoutId() {
         return this.workoutId;
@@ -97,17 +90,8 @@ public final class Workout {
         return this.user;
     }
 
-    public Location geLocation() {
+    public Location getLocation() {
         return this.location;
-    }
-
-    public void setExercises(Set<Exercise> newExercises) {
-        if (exercises == null) {
-            this.exercises = newExercises;
-        }
-        if (newExercises != null) {
-            exercises.addAll(newExercises);
-        }
     }
 
 }

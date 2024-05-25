@@ -25,14 +25,12 @@ public class ExerciseRepositoryTest {
     void testFindExercisesByWorkoutId() {
 
         // Arrange
-        Exercise exercise1 = exerciseRepository.getReferenceById(9999);
-        Exercise exercise2 = exerciseRepository.getReferenceById(9998);
-        Exercise exercise3 = exerciseRepository.getReferenceById(9997);
+        Exercise exercise1 = exerciseRepository.getReferenceById(9992);
 
-        int workoutId = 9999;
+        int workoutId = 9997;
 
         // Act
-        List<Exercise> exercisesTrue = new ArrayList<>(List.of(exercise1, exercise2, exercise3));
+        List<Exercise> exercisesTrue = new ArrayList<>(List.of(exercise1));
         List<Exercise> exercisesAssert = exerciseRepository.findExercisesByWorkoutId(workoutId);
 
         // Assert if the listed known exercises are considing with 

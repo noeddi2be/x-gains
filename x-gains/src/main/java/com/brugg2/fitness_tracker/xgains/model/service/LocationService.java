@@ -22,5 +22,9 @@ public class LocationService {
         return locationRepository.returnAllLocations();
     }
 
+    public Location getLocationById(int locationId) {
+        return locationRepository.findLocationById(locationId);
+    }
+
 
 }
