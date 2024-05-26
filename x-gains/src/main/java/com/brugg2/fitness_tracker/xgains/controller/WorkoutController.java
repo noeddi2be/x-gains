@@ -12,7 +12,6 @@ import com.brugg2.fitness_tracker.xgains.model.service.WorkoutService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.hibernate.boot.registry.classloading.spi.ClassLoaderService.Work;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

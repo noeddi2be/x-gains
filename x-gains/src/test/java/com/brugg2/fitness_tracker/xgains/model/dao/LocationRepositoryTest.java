@@ -1,0 +1,41 @@
+package com.brugg2.fitness_tracker.xgains.model.dao;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+
+import com.brugg2.fitness_tracker.xgains.model.entity.Location;
+
+@SpringBootTest
+public class LocationRepositoryTest {
+
+    @Autowired
+    private LocationRepository locationRepository;
+
+    @Test
+    void testFindLocationById() {
+
+        // Act
+        Location location = new Location();
+
+        // Arrange
+        location = locationRepository.findLocationById(20);
+
+        // Assert
+        assertEquals(20, location.getLocationId());
+
+    }
+
+    @Test
+    void testReturnAllLocations() {
+
+        // Act
+        Integer numberOfLocations = locationRepository.returnAllLocations().size();
+
+        // Assert
+        assertNotNull(numberOfLocations);
+    }
+}

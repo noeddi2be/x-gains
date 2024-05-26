@@ -33,4 +33,21 @@ public class WorkoutRepositoryTest {
         assertEquals(workoutsTrue, workoutsAssert);
 
     }
+
+	@Test
+	void testGetWorkoutById() {
+
+        // Arrange
+        int workoutId = 9999;
+
+        // Act
+        Workout workout = new Workout();
+        workout = workoutRepository.getWorkoutById(workoutId);
+
+        // Assert if retrieved workout equals known workout from database.
+        assertEquals(9999, workout.getWorkoutId());
+		
+	}
+
+
 }
