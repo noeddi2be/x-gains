@@ -10,11 +10,7 @@ import com.brugg2.fitness_tracker.xgains.model.entity.User;
 public interface UserRepository extends JpaRepository<User, Integer> {
 
     /**
-     * Abstract method. Handled by Spring framework.
-     * When the method is called, it executes a manual query.
-     * The query is specified in the :userId parameter. JPA supports named
-     * parameters -> ":param"
-     * 
+     * Method to find a user by ID. 
      * @param userId integer primary key user.
      * @return User object of the corresponding user.
      */
@@ -23,11 +19,7 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     public User findUserById(int userId);
 
     /**
-     * Abstract method. Handled by Spring framework.
-     * When the method is called, it executes a manual query.
-     * The query is specified in the :userId parameter. JPA supports named
-     * parameters -> ":param"
-     * 
+     * Method to find user by email. 
      * @param email String email address of user. 
      * @return User object of the corresponding user.
      */

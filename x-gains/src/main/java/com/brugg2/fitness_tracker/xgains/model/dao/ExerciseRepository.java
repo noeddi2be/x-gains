@@ -25,6 +25,11 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Integer> {
                         "WHERE fk_workout_id = :workoutId", nativeQuery = true)
         List<Exercise> findExercisesByWorkoutId(@Param("workoutId") int workoutId);
 
+        /**
+         * Method to find exercises by ID.
+         * @param exerciseId integer primary key workout.
+         * @return Exercise Object
+         */
         @Query(value = """
                         SELECT * FROM exercise
                         WHERE exercise.exercise_id = :exerciseId

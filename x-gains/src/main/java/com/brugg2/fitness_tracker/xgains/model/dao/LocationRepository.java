@@ -12,11 +12,17 @@ import com.brugg2.fitness_tracker.xgains.model.entity.Location;
 public interface LocationRepository extends JpaRepository<Location, Integer> {
 
     /**
+     * Method to return all available locations.
      * @return Locations all objects of location.
      */
     @Query(value = "SELECT * FROM location", nativeQuery = true)
     List<Location> returnAllLocations();
 
+    /**
+     * Method to return location by ID.
+     * @param locationId integer primary key location.
+     * @return Location object.
+     */
     @Query(value = """
         SELECT * FROM location
         WHERE location.location_id = :locationId

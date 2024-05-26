@@ -13,11 +13,7 @@ import com.brugg2.fitness_tracker.xgains.model.entity.Workout;
 public interface WorkoutRepository extends JpaRepository<Workout, Integer> {
 
     /**
-     * Abstract method. Handled by spring framework.
-     * When the method is called, it executes a manual query.
-     * The query is specified in the :userId parameter. JPA supports named
-     * parameters -> ":param"
-     * 
+     * Method to find all workouts of a user.
      * @param userId integer primary key user.
      * @return java.util.List with Workout objects.
      */
@@ -28,6 +24,11 @@ public interface WorkoutRepository extends JpaRepository<Workout, Integer> {
             """, nativeQuery = true)
     List<Workout> findWorkoutsByUserId(@Param("userId") int userId);
 
+    /**
+     * Method to get workout by ID.
+     * @param workoutId integer primary key workout.
+     * @return Workout object.
+     */
     @Query(value = """
         SELECT * FROM workout
         WHERE workout_id = :workoutId
