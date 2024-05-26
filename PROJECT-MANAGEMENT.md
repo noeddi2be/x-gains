@@ -54,7 +54,7 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - [ ] Dropdown for all available exercises
 - [x] Save exercise to workout (values filled in form)
 - [x] Get all exercises from workout
-- [ ] Discard (delete exercise from workout)
+- [x] Discard (delete exercise from workout)
 - [ ] Dropdown for gym list
 - [ ] (Timer) - only do when enough time, frontent possible? Set manual.
 
@@ -62,7 +62,7 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 ##### All workouts view
 - [x] Get all workouts for user
 - [x] Get all exercises for workout
-- [ ] Delete workout
+- [x] Delete workout
 
 
 ## 🧪 Testing
@@ -71,6 +71,6 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - Implement tests for important functionalities. 
 
 ### ✅ To do:
-- [ ] API tests
-- [ ] Logic tests
+- [x] API tests -> Postman
+- [x] Logic tests
 
