@@ -9,6 +9,11 @@ import com.brugg2.fitness_tracker.xgains.model.service.LocationService;
 import com.brugg2.fitness_tracker.xgains.model.service.UserService;
 import com.brugg2.fitness_tracker.xgains.model.service.WorkoutService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -43,6 +48,47 @@ public class WorkoutController {
      *                Spring.
      * @return Returns the saved object in the database in JSON format.
      */
+    @Operation(summary = "Add a new workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "New workout details", required = true, content = @Content(
+            mediaType = "application/json", examples = @ExampleObject(value = """
+                {
+                    "workoutName": "Evening Workout",
+                    "workoutDate": "2024-05-25 18:30:00",
+                    "duration": 60,
+                    "userId": 9999,
+                    "locationId": 20
+                }
+            """)
+            )
+        )
+    )
+    @ApiResponse(responseCode = "201", description = "Workout created successfully", content = @Content(
+        mediaType = "application/json", examples = @ExampleObject(
+            value = """
+                {
+                    "workoutId": 1,
+                    "workoutName": "Evening Workout",
+                    "workoutDate": "2024-01-25T17:30:00.000+00:00",
+                    "duration": 60,
+                    "user": {
+                      "userId": 9999,
+                      "accountType": "user",
+                      "username": "Emy",
+                      "email": "emily.sharp@gmail.com",
+                      "hashedPassword": "3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2",
+                      "firstname": "Emily",
+                      "lastname": "Sharp",
+                      "birthdate": "1979-10-11T23:00:00.000+00:00"
+                    },
+                    "location": {
+                      "locationId": 20,
+                      "locationName": "Brugg"
+                    }
+                  }
+            """)
+        )
+    )
+    @ApiResponse(responseCode = "400", description = "Invalid input")
     @PostMapping("/new")
     public ResponseEntity addWorkout(@RequestBody String json) {
 
@@ -52,7 +98,8 @@ public class WorkoutController {
         try {
             JSONObject jsonObject = new JSONObject(json);
             String workoutName = jsonObject.has("workoutName") ? jsonObject.getString("workoutName") : null;
-            Date workoutDate = jsonObject.has("workoutDate") ? dateFormat.parse(jsonObject.getString("workoutDate")) : null;
+            Date workoutDate = jsonObject.has("workoutDate") ? dateFormat.parse(jsonObject.getString("workoutDate"))
+                    : null;
             Integer duration = jsonObject.has("duration") ? jsonObject.getInt("duration") : null;
             int userId = jsonObject.getInt("userId");
             int locationId = jsonObject.getInt("locationId");
@@ -108,22 +155,22 @@ public class WorkoutController {
      * Input is required in json format.
      * 
      * @param workoutId method looks for 'workoutId' in the json payload.
-    */
+     */
     @DeleteMapping("/delete")
     public ResponseEntity deleteWorkout(@RequestBody String json) {
         try {
             int workoutId = new JSONObject(json).getInt("workoutId");
             if (workoutService.getWorkoutByWorkoutId(workoutId) == null) {
                 return ResponseEntity.ok("No workout with ID " + workoutId + ".");
-            };
+            }
+            ;
 
             workoutService.deleteWorkout(workoutId);
             return ResponseEntity.ok("Deletion successful!");
 
         } catch (Exception e) {
             return ResponseEntity.status(
-                HttpStatus.CONFLICT
-            ).body(e.toString());
+                    HttpStatus.CONFLICT).body(e.toString());
         }
     }
 
