@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import com.brugg2.fitness_tracker.xgains.model.service.PasswordHashingService;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -35,9 +36,11 @@ public final class User {
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
+    @JsonIgnore
     @Column(name = "salt")
     private Integer salt;
 
+    @JsonIgnore
     @Column(name = "hashed_password", nullable = true, length = 255)
     private String hashedPassword;
 
@@ -50,6 +53,7 @@ public final class User {
     @Column(name = "birthdate")
     private Date birthdate;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
     private List<Workout> workouts;
 

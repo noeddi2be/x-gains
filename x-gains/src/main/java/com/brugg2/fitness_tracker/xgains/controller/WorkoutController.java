@@ -16,6 +16,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,15 +46,15 @@ public class WorkoutController {
      * Input names of the attributes need to be the java class variable names.
      * 
      * @param workout is input as a JSON object and converted to a Java object by
-     *                Spring.
-     * @return Returns the saved object in the database in JSON format.
+     *                manually parsing. 
+     * @return String "Workout created!"
      */
     @Operation(summary = "Add a new workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
         description = "New workout details", required = true, content = @Content(
             mediaType = "application/json", examples = @ExampleObject(value = """
                 {
                     "workoutName": "Evening Workout",
-                    "workoutDate": "2024-05-25 18:30:00",
+                    "workoutDate": "2024-05-25T18:30:00",
                     "duration": 60,
                     "userId": 9999,
                     "locationId": 20
@@ -62,44 +63,22 @@ public class WorkoutController {
             )
         )
     )
-    @ApiResponse(responseCode = "201", description = "Workout created successfully", content = @Content(
+    @ApiResponse(responseCode = "200", description = "Workout created successfully", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = """
-                {
-                    "workoutId": 1,
-                    "workoutName": "Evening Workout",
-                    "workoutDate": "2024-01-25T17:30:00.000+00:00",
-                    "duration": 60,
-                    "user": {
-                      "userId": 9999,
-                      "accountType": "user",
-                      "username": "Emy",
-                      "email": "emily.sharp@gmail.com",
-                      "hashedPassword": "3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2",
-                      "firstname": "Emily",
-                      "lastname": "Sharp",
-                      "birthdate": "1979-10-11T23:00:00.000+00:00"
-                    },
-                    "location": {
-                      "locationId": 20,
-                      "locationName": "Brugg"
-                    }
-                  }
-            """)
+            value = "Workout created!"
+            )
         )
     )
-    @ApiResponse(responseCode = "400", description = "Invalid input")
     @PostMapping("/new")
-    public ResponseEntity addWorkout(@RequestBody String json) {
+    public ResponseEntity addWorkout(@RequestBody Map<String, Object> json) {
 
         Workout workout = new Workout();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd hh:mm:ss");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd'T'hh:mm:ss");
 
         try {
             JSONObject jsonObject = new JSONObject(json);
             String workoutName = jsonObject.has("workoutName") ? jsonObject.getString("workoutName") : null;
-            Date workoutDate = jsonObject.has("workoutDate") ? dateFormat.parse(jsonObject.getString("workoutDate"))
-                    : null;
+            Date workoutDate = jsonObject.has("workoutDate") ? dateFormat.parse(jsonObject.getString("workoutDate")) : null;
             Integer duration = jsonObject.has("duration") ? jsonObject.getInt("duration") : null;
             int userId = jsonObject.getInt("userId");
             int locationId = jsonObject.getInt("locationId");
@@ -116,10 +95,10 @@ public class WorkoutController {
             workoutService.createWorkout(workout);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error!");
 
         }
-        return ResponseEntity.ok(workout);
+        return ResponseEntity.ok("Workout created!");
     }
 
     /**
@@ -130,8 +109,18 @@ public class WorkoutController {
      *             object.
      * @return Returns all workouts or HttpStatus Not_Found.
      */
+    @Operation(summary = "Add a new workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "userId", required = true, content = @Content(
+            mediaType = "application/json", examples = @ExampleObject(value = """
+                {
+                    "userId": 20
+                }
+            """)
+            )
+        )
+    )
     @GetMapping("/all")
-    public ResponseEntity getAllWorkouts(@RequestBody String json) {
+    public ResponseEntity getAllWorkouts(@RequestBody Map<String, Object> json) {
 
         try {
             JSONObject jsonObject = new JSONObject(json);
