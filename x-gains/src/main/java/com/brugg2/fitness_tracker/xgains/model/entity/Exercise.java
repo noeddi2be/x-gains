@@ -1,7 +1,5 @@
 package com.brugg2.fitness_tracker.xgains.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -41,7 +39,6 @@ public final class Exercise {
     @Column(name = "distance")
     private Integer distance;
 
-    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "fk_workout_id", nullable = false)
     private Workout workout;
