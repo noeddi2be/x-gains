@@ -1,6 +1,8 @@
 package com.brugg2.fitness_tracker.xgains;
 
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -27,8 +29,8 @@ public class Application {
 	}
 
 	@GetMapping
-	public String home() {
-		return "Welcome to X-Gains!";
+	public String home(Principal principal) {
+		return "Welcome to X-Gains! " +  "You are logged in as " + principal.getName() + ".";
 	}
 
 	@Bean
