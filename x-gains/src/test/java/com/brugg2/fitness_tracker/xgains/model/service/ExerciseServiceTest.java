@@ -35,7 +35,7 @@ public class ExerciseServiceTest {
         exercise.setNumberOfSets(5);
         exercise.setTime(5);
         exercise.setDistance(5);
-        exercise.setWorkout(workoutRepository.getWorkoutById(9999));
+        exercise.setWorkout(workoutRepository.getWorkoutById(9997));
         return exercise;
     }
 
