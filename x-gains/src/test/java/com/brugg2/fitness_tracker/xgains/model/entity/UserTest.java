@@ -30,12 +30,12 @@ class UserTest {
     void testSetPassword() {
         User test = new User();
 
-        boolean condition = test.getHashedPassword() == null;
+        boolean condition = test.getPassword() == null;
         assertTrue(condition);
 
         test.setPassword("test");
 
-        condition = test.getHashedPassword() != null;
+        condition = test.getPassword() != null;
         assertTrue(condition);
     }
 }

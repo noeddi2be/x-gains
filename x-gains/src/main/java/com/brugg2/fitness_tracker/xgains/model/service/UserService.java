@@ -1,5 +1,7 @@
 package com.brugg2.fitness_tracker.xgains.model.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,6 +32,10 @@ public class UserService {
 
     public User getUserByEmail(String email) {
         return userRepository.findUserByEmail(email);
+    }
+
+    public Optional<User> getUserByUsername(String username) {
+        return userRepository.findUserByUsername(username);
     }
 
 }

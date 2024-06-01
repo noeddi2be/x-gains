@@ -113,7 +113,7 @@ public final class User {
         return this.email;
     }
 
-    public String getHashedPassword() {
+    public String getPassword() {
         return this.password;
     }
 
