@@ -1,9 +1,9 @@
 -- Insert Users
-INSERT INTO account (user_id, account_type, username, email, salt, hashed_password, firstname, lastname, birthdate)
+INSERT INTO account (user_id, account_type, username, email, password, firstname, lastname, birthdate)
 VALUES 
-    (9999, 'user', 'Emy', 'emily.sharp@gmail.com', 31296878, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Emily', 'Sharp', '1979-10-12'),
-    (9998, 'user', 'Pete', 'pete.david@home.com', 13058720, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Pete', 'Davidson', '1984-03-01'),
-    (9997, 'user', 'GigaChad50', 'gg5@icloud.com', 10238509, '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Bill', 'Gates', '1960-05-02');
+    (9999, 'user', 'Emy', 'emily.sharp@gmail.com', '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Emily', 'Sharp', '1979-10-12'),
+    (9998, 'user', 'Pete', 'pete.david@home.com', '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Pete', 'Davidson', '1984-03-01'),
+    (9997, 'user', 'GigaChad50', 'gg5@icloud.com', '3a9264c6611c2799199ee9012533fc80c94ce563c39460f9d9c0ac382a2a78b6906e9bee1ac55f242064d0d3f5405e4ca8245d67c65fe608291e196976fcdeb2', 'Bill', 'Gates', '1960-05-02');
 
 -- Insert Locations
 INSERT INTO location (location_id, location_name) VALUES (20, 'Brugg'), (19, 'Basel'), (18, 'Olten');

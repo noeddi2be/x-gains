@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
-import com.brugg2.fitness_tracker.xgains.model.service.PasswordHashingService;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
@@ -36,13 +35,8 @@ public final class User {
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
-    @JsonIgnore
-    @Column(name = "salt")
-    private Integer salt;
-
-    @JsonIgnore
-    @Column(name = "hashed_password", nullable = true, length = 255)
-    private String hashedPassword;
+    @Column(name = "password", nullable = true, length = 255)
+    private String password;
 
     @Column(name = "firstname", nullable = false, length = 255)
     private String firstname;
@@ -88,13 +82,8 @@ public final class User {
         this.email = email;
     }
 
-    public void setSalt() {
-        this.salt = PasswordHashingService.setSalt();
-    }
-
     public void setPassword(String password) {
-        setSalt();
-        this.hashedPassword =  PasswordHashingService.hashPassword(password, salt);
+        this.password = password;
     }
 
     public void setFirstname(String firstname) {
@@ -128,7 +117,7 @@ public final class User {
     }
 
     public String getHashedPassword() {
-        return this.hashedPassword;
+        return this.password;
     }
 
     public String getFirstname() {
