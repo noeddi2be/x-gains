@@ -23,7 +23,6 @@ public class SecurityConfig {
             "/swagger-ui/**",
             "/swagger-ui.html",
     };
-
     private final JpaUserDetailsService jpaUserDetailsService;
 
     public SecurityConfig(JpaUserDetailsService jpaUserDetailsService) {

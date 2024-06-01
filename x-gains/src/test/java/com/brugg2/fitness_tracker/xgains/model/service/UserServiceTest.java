@@ -8,11 +8,13 @@ import java.util.Date;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.brugg2.fitness_tracker.xgains.model.dao.UserRepository;
 import com.brugg2.fitness_tracker.xgains.model.entity.User;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class UserServiceTest {
 
     @Autowired

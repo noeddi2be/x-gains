@@ -1,16 +1,15 @@
 package com.brugg2.fitness_tracker.xgains.model.service;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import com.brugg2.fitness_tracker.xgains.model.dao.LocationRepository;
 import com.brugg2.fitness_tracker.xgains.model.dao.UserRepository;
@@ -19,6 +18,7 @@ import com.brugg2.fitness_tracker.xgains.model.entity.User;
 import com.brugg2.fitness_tracker.xgains.model.entity.Workout;
 
 @SpringBootTest
+@ActiveProfiles("test")
 public class WorkoutServiceTest {
 
     @Autowired
