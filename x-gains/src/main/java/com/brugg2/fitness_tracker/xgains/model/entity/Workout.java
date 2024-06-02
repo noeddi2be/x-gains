@@ -27,10 +27,10 @@ public final class Workout {
     @Column(name = "workout_name", nullable = false, length = 50)
     private String workoutName;
 
-    @Column(name = "workout_date", nullable = false)
+    @Column(name = "workout_date")
     private Date workoutDate;
 
-    @Column(name = "duration", nullable = false)
+    @Column(name = "duration")
     private Integer duration;
 
     @ManyToOne(fetch = FetchType.EAGER)

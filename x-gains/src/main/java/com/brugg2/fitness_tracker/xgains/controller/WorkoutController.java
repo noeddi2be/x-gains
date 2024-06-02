@@ -107,7 +107,7 @@ public class WorkoutController {
 
             workout.setWorkoutName(workoutName);
             workout.setWorkoutDate(workoutDate);
-            workout.setDuration(duration);
+            workout.setDuration(duration == null ? 0 : duration); 
             workout.setUser(user);
             workout.setLocation(location);
 
