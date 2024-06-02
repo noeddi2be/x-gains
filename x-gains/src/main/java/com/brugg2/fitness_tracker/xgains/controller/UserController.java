@@ -6,10 +6,23 @@ import com.brugg2.fitness_tracker.xgains.model.dao.UserRepository;
 import com.brugg2.fitness_tracker.xgains.model.entity.User;
 import com.brugg2.fitness_tracker.xgains.model.service.UserService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.ExampleObject;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+import java.util.Optional;
+
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,6 +39,13 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    private final PasswordEncoder encoder;
+
+    @Autowired
+    public UserController(PasswordEncoder passwordEncoder) {
+        this.encoder= passwordEncoder;
+    }
+
     /**
      * Method to create a new user saves it to the database.
      * Input names of the attributes need to be the java class variable names.
@@ -34,82 +54,126 @@ public class UserController {
      *             Spring.
      * @return Returns the saved object in the database in JSON format.
      */
+        @Operation(summary = "Create a new user", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "New user details", required = true, content = @Content(
+            mediaType = "application/json", examples = @ExampleObject(value = """
+                {
+                    "accountType": "0",
+                    "username": "007",
+                    "email": "james.bond@secretservice.uk",
+                    "password": "password",
+                    "firstname": "James",
+                    "lastname": "Bond",
+                    "birthdate": "2024-11-11"
+                }
+            """)
+            )
+        )
+    )
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
+        mediaType = "application/json", examples = @ExampleObject(
+            value = "User 1 created!"
+            )
+        )
+    )
     @PostMapping("/new")
-    public ResponseEntity addUser(@RequestBody User user) {
-        
+    public ResponseEntity addUser(@RequestBody Map<String, Object> json) {
+
+        User user = new User();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd");
+
         try {
+
+            JSONObject jsonObject = new JSONObject(json);
+            Integer accountType = jsonObject.has("accountType") ? jsonObject.getInt("accountType") : null;
+            String username = jsonObject.has("username") ? jsonObject.getString("username") : null;
+            String email = jsonObject.has("email") ? jsonObject.getString("email") : null;
+            String password = jsonObject.has("password") ? jsonObject.getString("password") : null;
+            String firstname = jsonObject.has("firstname") ? jsonObject.getString("firstname") : null;
+            String lastname = jsonObject.has("lastname") ? jsonObject.getString("lastname") : null;
+            Date birthdate = jsonObject.has("birthdate") ? dateFormat.parse(jsonObject.getString("birthdate")) : null;
+
+            if (userService.getUserByEmail(email) != null) {
+                return ResponseEntity.internalServerError().body("User with email: " + email + " already exists!");
+            }
+
+            if (userService.getUserByUsername(username).isPresent()) {
+                return ResponseEntity.internalServerError().body("User with username: " + username + " already exists!");
+            }
+
+            user.setAccountType(accountType);
+            user.setUsername(username);
+            user.setEmail(email);
+            user.setPassword(encoder.encode(password));
+            user.setFirstname(firstname);
+            user.setLastname(lastname);
+            user.setBirthdate(birthdate);
+            
             userService.createUser(user);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error! -> " + e.toString());
 
         }
-        return ResponseEntity.ok(user.getEmail());
+        return ResponseEntity.ok("User " + user.getUserId() + " created!");
     }
 
     /**
      * Method to remove a new user from the database.
      * Input as a json object and converted to a String.
      * 
-     * @param json Key: "email", Value: "user@email.com"
-     * @return Returns the deleted object in the database in JSON format.
+     * @param UserDetails User needs to be logged in.
+     * @return Returns the email of the deleted user in json format.
      */
+    @Operation(summary = "Delete user account")
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
+        mediaType = "application/json", examples = @ExampleObject(
+            value = "Account " + "james.bond@secretservice.uk" + " deleted!"
+            )
+        )
+    )
     @DeleteMapping("/delete")
-    public ResponseEntity deleteUser(@RequestBody String json) {
+    public ResponseEntity deleteUser(@AuthenticationPrincipal UserDetails userDetails) {
 
-        User user;
+        User user = new User();
 
         try {
-            JSONObject jsonObject = new JSONObject(json);
-            String email = jsonObject.getString("email");
-
-            user = userService.getUserByEmail(email);
-            if (user == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found.");
-            }
-
+            user = userService.getUserByUsername(userDetails.getUsername()).get();
             userService.deleteUser(user);
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
         }
 
-        return ResponseEntity.ok(user.getEmail());
+        return ResponseEntity.ok("Account " + user.getEmail() + " deleted!");
     }
 
     /**
-     * Method to view user details.
-     * Input is a json payload containing the user ID.
+     * Method to retrieve a user from the database.
      * 
-     * @param userID json -> Key: "userID", Value: 9999
-     * @return User object in Json format.
+     * @param UserDetails User needs to be logged in.
+     * @return Returns the account details of the user in json format.
      */
+    @Operation(summary = "Get user details")
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
+        mediaType = "application/json", examples = @ExampleObject(
+            value = ""
+            )
+        )
+    )
     @GetMapping("/account")
-    public ResponseEntity getAccountDetails(@RequestBody String json) {
+    public ResponseEntity getAccountDetails(@AuthenticationPrincipal UserDetails userDetails) {
 
-        JSONObject jsonObject;
-        int userID;
-        User user;
-
+        User user = new User();
 
         try {
-            jsonObject = new JSONObject(json);
-            userID = jsonObject.getInt("userID");
-            user = userService.getUserById(userID);
+            user = userService.getUserByUsername(userDetails.getUsername()).get();
 
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
             }
-            jsonObject.clear();
-            jsonObject.put("userID", user.getUserId());
-            jsonObject.put("accountType", user.getAccountType());
-            jsonObject.put("username", user.getUsername());
-            jsonObject.put("firstname", user.getFirstname());
-            jsonObject.put("lastname", user.getLastname());
-            jsonObject.put("birthdate", user.getBirthdate());
-            String userdata = jsonObject.toString(4);
 
-            return ResponseEntity.ok(userdata);
+            return ResponseEntity.ok(user);
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString()); 
