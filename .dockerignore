@@ -1,0 +1,84 @@
+# Project files
+PROJECT-MANAGEMEND.md
+README.md
+
+# IDE/Editor specific files
+.idea/
+.vscode/
+/x-gains/.vscode
+*.iml
+.project
+.classpath
+/x-gains/.settings/
+
+# Build artifacts
+/x-gains/target/
+/x-gains/build/
+/x-gains/out/
+*.jar
+*.war
+*.class
+
+# Dependency directories
+node_modules/
+lib/
+vendor/
+
+# Temporary files
+*.tmp
+*.log
+*.swp
+
+# Generated files
+/generated/
+/docs/
+
+# macOS 
+.DS_Store
+/x-gains/.DS_Store
+
+# Linux 
+lost+found/
+
+# Windows 
+Thumbs.db
+Desktop.ini
+
+# Devcontainer directory
+../.devcontainer/
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+
+# IDE-specific files
+.idea/
+*.iml
+
+# Editor backup files
+*~
+
+# Node.js dependencies
+node_modules/
+
+# Python dependencies
+__pycache__/
+
+# Virtual environment
+venv/
+
+# Compiled Java classes
+*.class
+
+# Gradle build directory
+build/
+
+# IntelliJ IDEA files
+*.ipr
+*.iws
+
+# Eclipse files
+.settings/
+.classpath
+.project
