@@ -64,7 +64,7 @@ public class WorkoutController {
             )
         )
     )
-    @ApiResponse(responseCode = "200", description = "Workout created successfully", content = @Content(
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
             value = "Workout created!"
             )
@@ -110,10 +110,31 @@ public class WorkoutController {
      * @return Returns all workouts or HttpStatus Not_Found.
      */
     @Operation(summary = "Return all workouts of a user")
-    @ApiResponse(responseCode = "200", description = "Workouts retrieved", content = @Content(
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = ""
-            )
+            value = """
+                [
+                    {
+                        "workoutId": 1,
+                        "workoutName": "Evening Workout",
+                        "workoutDate": "2024-01-25T17:30:00.000+00:00",
+                        "duration": 60,
+                        "user": {
+                            "userId": 9999,
+                            "accountType": "user",
+                            "username": "Emy",
+                            "email": "emily.sharp@gmail.com",
+                            "firstname": "Emily",
+                            "lastname": "Sharp",
+                            "birthdate": "1979-10-11T23:00:00.000+00:00"
+                        },
+                        "location": {
+                            "locationId": 20,
+                            "locationName": "Brugg"
+                        }
+                    }
+                ]
+            """)
         )
     )
     @GetMapping("/all")
@@ -150,9 +171,9 @@ public class WorkoutController {
             )
         )
     )
-    @ApiResponse(responseCode = "200", description = "Deletion successful!", content = @Content(
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = ""
+            value = "Deletion successful!"
             )
         )
     )

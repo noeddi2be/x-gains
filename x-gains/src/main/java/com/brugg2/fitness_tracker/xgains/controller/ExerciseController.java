@@ -48,7 +48,7 @@ public class ExerciseController {
      * @param exercise is a JSON object and converted to a Java object by Spring.
      * @return Returns the saved object in the database in JSON format.
      */
-        @Operation(summary = "Add a new exercise", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+    @Operation(summary = "Add a new exercise", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
         description = "New exercise details", required = true, content = @Content(
             mediaType = "application/json", examples = @ExampleObject(value = """
                 {
@@ -62,9 +62,9 @@ public class ExerciseController {
             )
         )
     )
-    @ApiResponse(responseCode = "200", description = "Exercise added successfully", content = @Content(
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = "Exercise created!"
+            value = "Exercise 1 created!"
             )
         )
     )
@@ -106,7 +106,7 @@ public class ExerciseController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
 
         }
-        return ResponseEntity.ok(exercise);
+        return ResponseEntity.ok("Exercise " + 1 + " created!");
     }
 
     @Operation(summary = "Get all exercises of a workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
@@ -119,10 +119,41 @@ public class ExerciseController {
             )
         )
     )
-    @ApiResponse(responseCode = "200", description = "Retrieved exercises from workout", content = @Content(
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = "Exercises retrieved!"
-            )
+            value = """
+                [
+                    {
+                        "exerciseId": 9979,
+                        "exerciseName": "Box Jumps",
+                        "exerciseDescription": "Plyometric exercise using a box or platform",
+                        "weight": 0,
+                        "repetition": 10,
+                        "numberOfSets": 3,
+                        "time": null,
+                        "distance": null,
+                        "workout": {
+                            "workoutId": 9999,
+                            "workoutName": "Morning Workout",
+                            "workoutDate": "2024-03-31T22:00:00.000+00:00",
+                            "duration": 60,
+                            "user": {
+                                "userId": 9999,
+                                "accountType": "user",
+                                "username": "Emy",
+                                "email": "emily.sharp@gmail.com",
+                                "firstname": "Emily",
+                                "lastname": "Sharp",
+                                "birthdate": "1979-10-11T23:00:00.000+00:00"
+                            },
+                            "location": {
+                                "locationId": 20,
+                                "locationName": "Brugg"
+                            }
+                        }
+                    }
+                ]
+            """)
         )
     )
     @PostMapping("/all")
@@ -160,9 +191,9 @@ public class ExerciseController {
             )
         )
     )
-    @ApiResponse(responseCode = "200", description = "Deletion succesful!", content = @Content(
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = ""
+            value = "Deleted exercise 9999!"
             )
         )
     )
@@ -180,7 +211,7 @@ public class ExerciseController {
             }
 
             exerciseService.deleteExercise(exerciseId);
-            return ResponseEntity.ok("Deletion successful!");
+            return ResponseEntity.ok("Deleted exercise " + exerciseId + "!");
 
         } catch (Exception e) {
             return ResponseEntity.status(
