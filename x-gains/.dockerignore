@@ -5,16 +5,16 @@ README.md
 # IDE/Editor specific files
 .idea/
 .vscode/
-/x-gains/.vscode
+.vscode
 *.iml
 .project
 .classpath
-/x-gains/.settings/
+.settings/
 
 # Build artifacts
-/x-gains/target/
-/x-gains/build/
-/x-gains/out/
+target/
+build/
+out/
 *.jar
 *.war
 *.class
@@ -35,7 +35,6 @@ vendor/
 
 # macOS 
 .DS_Store
-/x-gains/.DS_Store
 
 # Linux 
 lost+found/
