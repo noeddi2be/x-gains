@@ -36,6 +36,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/h2-console/**").permitAll() // Access H2
                         .requestMatchers(SWAGGER_WHITELIST).permitAll() // Access Swagger
+                        .requestMatchers("/api/user/new").permitAll() // Allow access to the /users/new endpoint.
                         .anyRequest().authenticated() // All requests must be authenticated
                 )
                 .userDetailsService(jpaUserDetailsService)
