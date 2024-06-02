@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import org.springframework.stereotype.Component;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +35,7 @@ public final class User {
     @Column(name = "email", nullable = false, length = 50)
     private String email;
 
+    @JsonIgnore
     @Column(name = "password", nullable = true, length = 255)
     private String password;
 

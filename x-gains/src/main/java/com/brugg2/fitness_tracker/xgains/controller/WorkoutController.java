@@ -110,23 +110,18 @@ public class WorkoutController {
      *             object.
      * @return Returns all workouts or HttpStatus Not_Found.
      */
-    @Operation(summary = "Add a new workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-        description = "userId", required = true, content = @Content(
-            mediaType = "application/json", examples = @ExampleObject(value = """
-                {
-                    "userId": 20
-                }
-            """)
+    @Operation(summary = "Return all workouts of a user")
+    @ApiResponse(responseCode = "200", description = "Workouts retrieved", content = @Content(
+        mediaType = "application/json", examples = @ExampleObject(
+            value = ""
             )
         )
     )
     @GetMapping("/all")
-    public ResponseEntity getAllWorkouts(@RequestBody Map<String, Object> json) {
+    public ResponseEntity getAllWorkouts(@AuthenticationPrincipal UserDetails userDetails) {
 
         try {
-            JSONObject jsonObject = new JSONObject(json);
-            int userID = jsonObject.getInt("userId");
-            User user = userService.getUserById(userID);
+            User user = userService.getUserByUsername(userDetails.getUsername()).get();
 
             if (user == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
@@ -146,14 +141,34 @@ public class WorkoutController {
      * 
      * @param workoutId method looks for 'workoutId' in the json payload.
      */
+    @Operation(summary = "Delete a Workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+        description = "Insert a valid workoutId belonging to the user", required = true, content = @Content(
+            mediaType = "application/json", examples = @ExampleObject(value = """
+                {
+                    "workoutId": 9999
+                }
+            """)
+            )
+        )
+    )
+    @ApiResponse(responseCode = "200", description = "Deletion successful!", content = @Content(
+        mediaType = "application/json", examples = @ExampleObject(
+            value = ""
+            )
+        )
+    )
     @DeleteMapping("/delete")
-    public ResponseEntity deleteWorkout(@RequestBody String json) {
+    public ResponseEntity deleteWorkout(@RequestBody Map<String, Object> json, @AuthenticationPrincipal UserDetails userDetails) {
         try {
             int workoutId = new JSONObject(json).getInt("workoutId");
             if (workoutService.getWorkoutByWorkoutId(workoutId) == null) {
                 return ResponseEntity.ok("No workout with ID " + workoutId + ".");
             }
-            ;
+
+            if (workoutService.getWorkoutByWorkoutId(workoutId).getUser() != userService
+                .getUserByUsername(userDetails.getUsername()).get()) {
+                    return ResponseEntity.ok("Not allowed to delete this workout " + workoutId);
+            }
 
             workoutService.deleteWorkout(workoutId);
             return ResponseEntity.ok("Deletion successful!");
