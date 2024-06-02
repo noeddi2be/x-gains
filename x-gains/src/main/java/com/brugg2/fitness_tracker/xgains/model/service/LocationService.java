@@ -26,5 +26,8 @@ public class LocationService {
         return locationRepository.findLocationById(locationId);
     }
 
+    public Location getLocationByName(String locationName) {
+        return locationRepository.findLocationByName(locationName);
+    }
 
 }

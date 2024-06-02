@@ -28,4 +28,15 @@ public interface LocationRepository extends JpaRepository<Location, Integer> {
         WHERE location.location_id = :locationId
         """, nativeQuery = true)
     Location findLocationById(int locationId);
+
+        /**
+     * Method to return location by ID.
+     * @param locationId integer primary key location.
+     * @return Location object.
+     */
+    @Query(value = """
+        SELECT * FROM location
+        WHERE location.location_name = :name
+        """, nativeQuery = true)
+    Location findLocationByName(String name);
 }

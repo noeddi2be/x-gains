@@ -40,4 +40,18 @@ public class LocationRepositoryTest {
         // Assert
         assertNotNull(numberOfLocations);
     }
+
+    @Test
+    void testFindLocationByName() {
+
+        // Act
+        Location location = new Location();
+        String locationName = "Brugg";
+        
+        // Arrange
+        location = locationRepository.findLocationByName(locationName);
+
+        // Assert
+        assertEquals(locationName, location.getLocationName());
+    }
 }

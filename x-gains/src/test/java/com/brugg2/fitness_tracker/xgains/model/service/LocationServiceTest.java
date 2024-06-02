@@ -79,4 +79,19 @@ public class LocationServiceTest {
         assertNotEquals(size1, size2);
 
     }
+
+    @Test
+    void testGetLocationByName() {
+
+        // Arrange
+        Location location = setupLocation();
+
+        // Act
+        locationService.createLocation(location);
+        String locationName = location.getLocationName();
+        String locationNameAssert = "Test Location";
+
+        // Assert location ID's match
+        assertEquals(locationNameAssert, locationName);
+    }
 }

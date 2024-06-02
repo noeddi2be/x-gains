@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
@@ -22,6 +23,8 @@ import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -56,8 +59,7 @@ public class WorkoutController {
                     "workoutName": "Evening Workout",
                     "workoutDate": "2024-05-25T18:30:00",
                     "duration": 60,
-                    "userId": 9999,
-                    "locationId": 20
+                    "location": "Brugg"
                 }
             """)
             )
@@ -70,7 +72,7 @@ public class WorkoutController {
         )
     )
     @PostMapping("/new")
-    public ResponseEntity addWorkout(@RequestBody Map<String, Object> json) {
+    public ResponseEntity addWorkout(@RequestBody Map<String, Object> json, @AuthenticationPrincipal UserDetails userDetails) {
 
         Workout workout = new Workout();
         SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd'T'hh:mm:ss");
@@ -80,11 +82,10 @@ public class WorkoutController {
             String workoutName = jsonObject.has("workoutName") ? jsonObject.getString("workoutName") : null;
             Date workoutDate = jsonObject.has("workoutDate") ? dateFormat.parse(jsonObject.getString("workoutDate")) : null;
             Integer duration = jsonObject.has("duration") ? jsonObject.getInt("duration") : null;
-            int userId = jsonObject.getInt("userId");
-            int locationId = jsonObject.getInt("locationId");
+            String locationName = jsonObject.has("location") ? jsonObject.getString("location") : null;
 
-            User user = userService.getUserById(userId);
-            Location location = locationService.getLocationById(locationId);
+            User user = userService.getUserByUsername(userDetails.getUsername()).get();
+            Location location = locationService.getLocationByName(locationName);
 
             workout.setWorkoutName(workoutName);
             workout.setWorkoutDate(workoutDate);
@@ -95,7 +96,7 @@ public class WorkoutController {
             workoutService.createWorkout(workout);
 
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error!");
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error! -> " + e.toString());
 
         }
         return ResponseEntity.ok("Workout created!");
