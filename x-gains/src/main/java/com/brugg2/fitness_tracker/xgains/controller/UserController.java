@@ -58,7 +58,6 @@ public class UserController {
         description = "New user details", required = true, content = @Content(
             mediaType = "application/json", examples = @ExampleObject(value = """
                 {
-                    "accountType": "0",
                     "username": "007",
                     "email": "james.bond@secretservice.uk",
                     "password": "password",
@@ -85,7 +84,7 @@ public class UserController {
         try {
 
             JSONObject jsonObject = new JSONObject(json);
-            Integer accountType = jsonObject.has("accountType") ? jsonObject.getInt("accountType") : null;
+            // Integer accountType = jsonObject.has("accountType") ? jsonObject.getInt("accountType") : null;
             String username = jsonObject.has("username") ? jsonObject.getString("username") : null;
             String email = jsonObject.has("email") ? jsonObject.getString("email") : null;
             String password = jsonObject.has("password") ? jsonObject.getString("password") : null;
@@ -101,7 +100,7 @@ public class UserController {
                 return ResponseEntity.internalServerError().body("User with username: " + username + " already exists!");
             }
 
-            user.setAccountType(accountType);
+            user.setAccountType(0);
             user.setUsername(username);
             user.setEmail(email);
             user.setPassword(encoder.encode(password));

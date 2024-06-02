@@ -54,6 +54,9 @@ public class ExerciseController {
                 {
                     "exerciseName": "Running",
                     "exerciseDescription": "Cardio exercise outdoors or on a treadmill",
+                    "weight": 15,
+                    "repetition": 10,
+                    "numberOfSets": 3,
                     "time": 1800,
                     "distance": 6000,
                     "workoutId": 9999

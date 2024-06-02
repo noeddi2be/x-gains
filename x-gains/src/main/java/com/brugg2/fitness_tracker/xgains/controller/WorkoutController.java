@@ -66,8 +66,27 @@ public class WorkoutController {
     )
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = "Workout created!"
-            )
+            value = """
+                {
+                    "workoutId": 1,
+                    "workoutName": "Evening Workout",
+                    "workoutDate": "2024-01-25T17:30:00.000+00:00",
+                    "duration": 60,
+                    "user": {
+                      "userId": 9999,
+                      "accountType": "user",
+                      "username": "Emy",
+                      "email": "emily.sharp@gmail.com",
+                      "firstname": "Emily",
+                      "lastname": "Sharp",
+                      "birthdate": "1979-10-11T23:00:00.000+00:00"
+                    },
+                    "location": {
+                      "locationId": 20,
+                      "locationName": "Brugg"
+                    }
+                  }
+            """)
         )
     )
     @PostMapping("/new")
@@ -98,7 +117,7 @@ public class WorkoutController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Error! -> " + e.toString());
 
         }
-        return ResponseEntity.ok("Workout created!");
+        return ResponseEntity.ok(workout);
     }
 
     /**
