@@ -17,6 +17,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +57,7 @@ public class WorkoutController {
             mediaType = "application/json", examples = @ExampleObject(value = """
                 {
                     "workoutName": "Evening Workout",
-                    "workoutDate": "2024-05-25T18:30:00",
+                    "workoutDate": "2024-05-25",
                     "duration": 60,
                     "location": "Brugg"
                 }
@@ -93,7 +94,9 @@ public class WorkoutController {
     public ResponseEntity addWorkout(@RequestBody Map<String, Object> json, @AuthenticationPrincipal UserDetails userDetails) {
 
         Workout workout = new Workout();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd'T'hh:mm:ss");
+        SimpleDateFormat dateFormat;
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));  // Date Time-Zone not alligned with frontend! TBD
 
         try {
             JSONObject jsonObject = new JSONObject(json);

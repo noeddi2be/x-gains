@@ -14,7 +14,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
-import java.util.Optional;
+import java.util.TimeZone;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -79,12 +79,13 @@ public class UserController {
     public ResponseEntity addUser(@RequestBody Map<String, Object> json) {
 
         User user = new User();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yy-mm-dd");
+        SimpleDateFormat dateFormat;
+        dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        dateFormat.setTimeZone(TimeZone.getTimeZone("UTC")); // Date Time-Zone not alligned with frontend! TBD
 
         try {
-
             JSONObject jsonObject = new JSONObject(json);
-            // Integer accountType = jsonObject.has("accountType") ? jsonObject.getInt("accountType") : null;
+            //Integer accountType = jsonObject.has("accountType") ? jsonObject.getInt("accountType") : null;
             String username = jsonObject.has("username") ? jsonObject.getString("username") : null;
             String email = jsonObject.has("email") ? jsonObject.getString("email") : null;
             String password = jsonObject.has("password") ? jsonObject.getString("password") : null;
