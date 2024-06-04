@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.brugg2.fitness_tracker.xgains.model.dao.UserRepository;
 import com.brugg2.fitness_tracker.xgains.model.entity.User;
 
+import jakarta.servlet.http.HttpSession;
+
 import org.springframework.web.bind.annotation.GetMapping;
 
 
@@ -29,8 +31,10 @@ public class Application {
 	}
 
 	@GetMapping
-	public String home(Principal principal) {
-		return "Welcome to X-Gains! " +  "You are logged in as " + principal.getName() + ".";
+	public String home(Principal principal, HttpSession session) {
+		String sessionId = session.getId(); // Retrieve the JSESSIONID
+        return "Welcome to X-Gains! " +  "You are logged in as " + principal.getName() + "."
+            + "\n" + "{\"Cookie\": \"JSESSIONID=" + sessionId + "\"}";
 	}
 
 	@Bean
