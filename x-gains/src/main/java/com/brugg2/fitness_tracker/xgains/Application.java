@@ -2,6 +2,8 @@ package com.brugg2.fitness_tracker.xgains;
 
 
 import java.security.Principal;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -31,11 +33,17 @@ public class Application {
 	}
 
 	@GetMapping
-	public String home(Principal principal, HttpSession session) {
-		String sessionId = session.getId(); // Retrieve the JSESSIONID
-        return "Welcome to X-Gains! " +  "You are logged in as " + principal.getName() + "."
-            + "\n" + "{\"Cookie\": \"JSESSIONID=" + sessionId + "\"}";
-	}
+    public Map<String, String> home(Principal principal, HttpSession session) {
+    String sessionId = session.getId(); // Retrieve the JSESSIONID
+    String message = "You are logged in as " + principal.getName() + ".";
+    String cookie = sessionId;
+
+    Map<String, String> response = new HashMap<>();
+    response.put("message", message);
+    response.put("cookie", cookie);
+
+    return response;
+}
 
 	@Bean
 	@Profile("!test")
