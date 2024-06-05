@@ -9,6 +9,7 @@ import com.brugg2.fitness_tracker.xgains.model.service.UserService;
 import com.brugg2.fitness_tracker.xgains.model.service.WorkoutService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -23,11 +24,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
@@ -114,16 +115,15 @@ public class ExerciseController {
         return ResponseEntity.ok("Exercise " + 1 + " created!");
     }
 
-/*     @Operation(summary = "Get all exercises of a workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-        description = "Provide workout ID", required = true, content = @Content(
-            mediaType = "application/json", examples = @ExampleObject(value = """
-                {
-                    "workoutId": 9999
-                }
-            """)
-            )
+@Operation(summary = "Get all exercises of a workout", 
+    parameters = {
+        @Parameter(name = "workoutId", 
+            description = "Provide workout ID", 
+            required = true, 
+            example = "9999" 
         )
-    )
+    } 
+)
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
             value = """
@@ -160,26 +160,26 @@ public class ExerciseController {
                 ]
             """)
         )
-    ) */
-    @GetMapping("/all")
-    public ResponseEntity getExercisesOfWorkout(@RequestParam Integer id, @AuthenticationPrincipal UserDetails userDetails) {
+    )
+    @GetMapping("/all/{workoutId}")
+    public ResponseEntity getExercisesOfWorkout(@PathVariable Integer workoutId, @AuthenticationPrincipal UserDetails userDetails) {
             
-        try {
-            Integer workoutId = id;
+        Integer id = workoutId;
 
-            if (workoutId == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No id specified!");
+        try {
+            if (id == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No ID specified!");
             }
 
-            List<Exercise> allExercises = exerciseService.getAllExercisesForWorkout(workoutId);
+            List<Exercise> allExercises = exerciseService.getAllExercisesForWorkout(id);
 
             if (allExercises.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Workout not found");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No workout found or no exercise in workout.");
             }
 
-            if (workoutService.getWorkoutByWorkoutId(workoutId).getUser() != userService
+            if (workoutService.getWorkoutByWorkoutId(id).getUser() != userService
             .getUserByUsername(userDetails.getUsername()).get()) {
-                return ResponseEntity.ok("Not allowed to get workout details of this workout! " + workoutId);
+                return ResponseEntity.ok("Not allowed to get workout details of this workout! " + id);
         }
 
             return ResponseEntity.ok(allExercises);
