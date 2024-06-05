@@ -116,14 +116,14 @@ public class ExerciseController {
     }
 
     @Operation(summary = "Get all exercises of a workout", 
-    parameters = {
-        @Parameter(name = "workoutId", 
-            description = "Provide workout ID", 
-            required = true, 
-            example = "9999" 
-        )
-    } 
-)
+        parameters = {
+            @Parameter(name = "workoutId", 
+                description = "Provide workout ID", 
+                required = true, 
+                example = "9999" 
+            )
+        } 
+    )
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
             value = """
