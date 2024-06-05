@@ -23,9 +23,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 
 
 @RestController
@@ -112,7 +114,7 @@ public class ExerciseController {
         return ResponseEntity.ok("Exercise " + 1 + " created!");
     }
 
-    @Operation(summary = "Get all exercises of a workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+/*     @Operation(summary = "Get all exercises of a workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
         description = "Provide workout ID", required = true, content = @Content(
             mediaType = "application/json", examples = @ExampleObject(value = """
                 {
@@ -158,14 +160,17 @@ public class ExerciseController {
                 ]
             """)
         )
-    )
-    @PostMapping("/all")
-    public ResponseEntity getExercisesOfWorkout(@RequestBody Map<String, Object> json, @AuthenticationPrincipal UserDetails userDetails) {
+    ) */
+    @GetMapping("/all")
+    public ResponseEntity getExercisesOfWorkout(@RequestParam Integer id, @AuthenticationPrincipal UserDetails userDetails) {
             
-        JSONObject jsonObject = new JSONObject(json);
-        Integer workoutId = jsonObject.getInt("workoutId");
-
         try {
+            Integer workoutId = id;
+
+            if (workoutId == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No id specified!");
+            }
+
             List<Exercise> allExercises = exerciseService.getAllExercisesForWorkout(workoutId);
 
             if (allExercises.isEmpty()) {
