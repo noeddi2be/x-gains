@@ -39,7 +39,7 @@ public class Application {
 	}
 
     @Operation(summary = "Login", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-        description = "Basic Auth", required = true        
+        description = "Basic Auth" 
         )
     )
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(
