@@ -112,7 +112,7 @@ public class ExerciseController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
 
         }
-        return ResponseEntity.ok("Exercise " + 1 + " created!");
+        return ResponseEntity.ok("Exercise " + exercise.getExerciseId() + " created!");
     }
 
     @Operation(summary = "Get all exercises of a workout", 
