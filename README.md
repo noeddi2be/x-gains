@@ -62,12 +62,11 @@ https://xgains-render.onrender.com/h2-console <br>
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/h2.png?raw=true" width="500" height="300">
 
 #### 🎨 Budibase
-http://example.com
+http://example.com <br>
+
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="500" height="500">
 
 ## 📱 App Content
-
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="300" height="300">
-
 ### 🏋🏽 Supported Exercises
 
 | No. | Exercise | Attribute 1| Attribute 2| Attribute 3| 
