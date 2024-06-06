@@ -10,6 +10,7 @@ import com.brugg2.fitness_tracker.xgains.model.service.UserService;
 import com.brugg2.fitness_tracker.xgains.model.service.WorkoutService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -30,6 +31,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/api/workout")
@@ -183,15 +185,14 @@ public class WorkoutController {
      * 
      * @param workoutId method looks for 'workoutId' in the json payload.
      */
-    @Operation(summary = "Delete a Workout", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-        description = "Insert a valid workoutId belonging to the user", required = true, content = @Content(
-            mediaType = "application/json", examples = @ExampleObject(value = """
-                {
-                    "workoutId": 9999
-                }
-            """)
+    @Operation(summary = "Delete a workout", 
+        parameters = {
+            @Parameter(name = "workoutId", 
+                description = "Provide workout ID as path variable", 
+                required = true, 
+                example = "9999" 
             )
-        )
+        } 
     )
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
@@ -199,10 +200,10 @@ public class WorkoutController {
             )
         )
     )
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteWorkout(@RequestBody Map<String, Object> json, @AuthenticationPrincipal UserDetails userDetails) {
+    @DeleteMapping("/delete/{workoutId}")
+    public ResponseEntity deleteWorkout(@PathVariable Integer workoutId, @AuthenticationPrincipal UserDetails userDetails) {
+
         try {
-            int workoutId = new JSONObject(json).getInt("workoutId");
             if (workoutService.getWorkoutByWorkoutId(workoutId) == null) {
                 return ResponseEntity.ok("No workout with ID " + workoutId + ".");
             }

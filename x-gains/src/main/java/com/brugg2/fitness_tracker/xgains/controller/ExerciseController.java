@@ -118,7 +118,7 @@ public class ExerciseController {
     @Operation(summary = "Get all exercises of a workout", 
         parameters = {
             @Parameter(name = "workoutId", 
-                description = "Provide workout ID", 
+                description = "Provide workout ID as path variable", 
                 required = true, 
                 example = "9999" 
             )
@@ -190,15 +190,14 @@ public class ExerciseController {
     }
 
 
-    @Operation(summary = "Delete exercise", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-        description = "Provide exercise ID", required = true, content = @Content(
-            mediaType = "application/json", examples = @ExampleObject(value = """
-                {
-                    "exerciseId": 9999
-                }
-            """)
+    @Operation(summary = "Delete an exercise", 
+        parameters = {
+            @Parameter(name = "exerciseId", 
+                description = "Provide exercise ID as path variable", 
+                required = true, 
+                example = "9999" 
             )
-        )
+        } 
     )
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
@@ -206,13 +205,13 @@ public class ExerciseController {
             )
         )
     )
-    @DeleteMapping("/delete")
-    public ResponseEntity deleteExercise(@RequestBody Map<String, Object> json, @AuthenticationPrincipal UserDetails userDetails) {
+    @DeleteMapping("/delete/{exerciseId}")
+    public ResponseEntity deleteExercise(@PathVariable Integer exerciseId, @AuthenticationPrincipal UserDetails userDetails) {
+
         try {
-            int exerciseId = new JSONObject(json).getInt("exerciseId");
             if(exerciseService.getExercisebyId(exerciseId) == null) {
                 return ResponseEntity.ok("No exercise with ID " + exerciseId + ".");
-            };
+            }
 
             if (exerciseService.getExercisebyId(exerciseId).getWorkout().getUser() != userService
             .getUserByUsername(userDetails.getUsername()).get()) {
