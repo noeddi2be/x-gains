@@ -5,14 +5,14 @@
 
 # ☕️ Use Case: X-Gains
 
-We have created a fitness tracker where users can create an account, <br>
-log in, add & modify workouts and track their activities and exercises. <br>
-The data is persisted in an H2 in-memory database and deployed on Render <br>
+We have created a fitness tracker where users can create an account,
+log in, add & modify workouts and track their activities and exercises.
+The data is persisted in an H2 in-memory database and deployed on Render
 in a Docker container.
 
 ---
 
-The application was created using an MVC design pattern. <br>
+The application was created using an MVC design pattern.
 The application is divided into different layers: 
 - Presentation Layer: Frontend (Built with Budibase), Controller classes
 - Application Layer: Service classes
@@ -20,29 +20,35 @@ The application is divided into different layers:
 - Persistence Layer: Data access object, Repository classes
 - Database Layer: SQL statements, Database schema (H2)
 
-We have used Maven for dependency management as well as for project building, <br>
-ensuring a consistent build process for deployment on Render. <br>
-The project was built using Spring Boot, which simplifies the initial Spring setup <br>
+We have used Maven for dependency management as well as for project building,
+ensuring a consistent build process for deployment on Render.
+The project was built using Spring Boot, which simplifies the initial Spring setup
 and leveraging the robust enterprise capabilities of the Spring Framework.
 
-We have configured an API using RestController annotations of Spring Boot and <br>
+We have configured an API using RestController annotations of Spring Boot and
 adjusted our Swagger UI for documentation purposes.
 
-We have included several testing classes to ensure proper functioning of our <br>
-application using JUnit. Controller classes are tested with Postman and <br>
+We have included several testing classes to ensure proper functioning of our
+application using JUnit. Controller classes are tested with Postman and
 can also be tried out on the Swagger-UI.
 
-Security is handled using the *spring-boot-starter-security* dependency. <br>
-At the moment, basic authentication is used to access the API Endpoints. <br>
-Credentials are validated using the user entity in the H2 database. <br>
-Passwords are stored hashed and decrypted using <br>
+Security is handled using the *spring-boot-starter-security* dependency.
+At the moment, basic authentication is used to access the API Endpoints.
+Credentials are validated using the user entity in the H2 database.
+Passwords are stored hashed and decrypted using
 a password encoder from org.springframework.security.crypto.
 
 ---
 
+### 👩‍💻🧑‍💻 Project Contributors
+- Silvana Rey
+- Dominik Schneider
+- Boris Vittek
+- Manuel Notter
+
 ### 🔗 Links
-The following services are live at the moment of project delivery and will be <br>
-turned off later on. The free version of Render is used, which requires some <br>
+The following services are live at the moment of project delivery and will be
+turned off later on. The free version of Render is used, which requires some
 loading time (~3 min) for the initial request to startup the system.
 
 #### ✳️ API Documentation & Testing
@@ -58,20 +64,9 @@ https://xgains-render.onrender.com/h2-console <br>
 #### 🎨 Budibase
 http://example.com
 
-<br>
-
-## Project Contributors
-- Silvana Rey
-- Dominik Schneider
-- Boris Vittek
-- Manuel Notter
-<br>
-
 ## 📱 App Content
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="300" height="300">
-
-<br>
 
 ### 🏋🏽 Supported Exercises
 
@@ -98,9 +93,6 @@ http://example.com
 | 19 | Sprints | Sets | Time | Distance |
 | 20 | Box Jumps | Sets | Repetitions | Height |
 
-<br>
-<br>
-
 ## 🧩 Scenario and User Stories
 
 X-Gains is a basic fitness tracking app designed to assist our users in achieving their health <br>
@@ -110,19 +102,16 @@ to support you every step of the way. X-Gains is more than just a fitness tracke
 to empower users to take control of their health and fitness, stay motivated, and achieve their desired <br>
 results. X-Gains is your ultimate companion on the path to a healthier, stronger you.
 
-<br>
-
 ## 🔧 ER-Model
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450">
-<br>
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450"> <br>
 
 ## 🔧 Wireframe User
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="900" height="550">
-<br>
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="900" height="550"> <br>
 
 ### 🧩 User Stories
+
 **🟠 Admin Role**
 * As an admin, I want to have a Web app so that I can use it on different mobile devices and on desktop computers.
 * As an admin, I want to be able to log in securely to the X-Gains app to access administrative features.
@@ -130,9 +119,6 @@ results. X-Gains is your ultimate companion on the path to a healthier, stronger
 * (Optional) As an admin, I want to have a dashboard displaying key metrics such as total users and activity summaries.
 * As an admin, I want to be able to add, edit, or remove different types of exercises to the app's database.
 * (Optional) As an admin, I want to be able to manage user accounts, including creating new accounts, resetting passwords, and deactivating accounts if necessary.
-
-<br>
-<br>
 
 **🟠 User Role**
 * As a user, I want to be able to sign up for an account on the X-Gains app to track my fitness progress.
