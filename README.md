@@ -10,6 +10,8 @@ log in, add & modify workouts and track their activities and exercises. <br>
 The data is persisted in an H2 in-memory database and deployed on Render <br>
 in a Docker container.
 
+---
+
 The application was created using an MVC design pattern. <br>
 The application is divided into different layers: 
 - Presentation Layer: Frontend (Built with Budibase), Controller classes
@@ -36,18 +38,22 @@ Credentials are validated using the user entity in the H2 database. <br>
 Passwords are stored hashed and decrypted using <br>
 a password encoder from org.springframework.security.crypto.
 
-### Links
+---
+
+### 🔗 Links
 The following services are live at the moment of project delivery and will be <br>
 turned off later on. The free version of Render is used, which requires some <br>
 loading time (~3 min) for the initial request to startup the system.
 
-#### API Documentation & Testing
-https://xgains-render.onrender.com/swagger-ui/index.html
+#### ✳️ API Documentation & Testing
+https://xgains-render.onrender.com/swagger-ui/index.html <br>
 
-#### H2 Database (Accessible ATM)
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/swagger.png?raw=true" width="500" height="500">
+
+#### 💿 H2 Database (Accessible ATM)
 https://xgains-render.onrender.com/h2-console
 
-#### Budibase
+#### 🎨 Budibase
 http://example.com
 
 <br>
