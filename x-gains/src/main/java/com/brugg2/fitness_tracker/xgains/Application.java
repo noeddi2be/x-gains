@@ -1,6 +1,5 @@
 package com.brugg2.fitness_tracker.xgains;
 
-
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
@@ -38,7 +37,7 @@ public class Application {
 		SpringApplication.run(Application.class, args);
 	}
 
-    @Operation(summary = "Login", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+    @Operation(summary = "Endpoint to login", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
         description = "Basic Auth" 
         )
     )
@@ -47,21 +46,16 @@ public class Application {
             value = """
                 {
                     "Message": "Welcome to X-Gains! You are logged in as Bob.",
-                    "Base64" : "Qm9iOkhpLCB5b3UgYXJlIGEgbmVyZCE="
-                  }
+                }
             """)
         )
     )
 	@GetMapping
     public Map<String, String> home(Principal principal, HttpSession session) {
-    String sessionId = session.getId(); // Retrieve the JSESSIONID
-    String base64SessionId = Base64.getEncoder().encodeToString(sessionId.getBytes());
-
     String message = "Welcome to X-Gains! You are logged in as " + principal.getName() + ".";
 
     Map<String, String> response = new HashMap<>();
     response.put("message", message);
-    response.put("cookie", base64SessionId);
 
     return response;
 }
