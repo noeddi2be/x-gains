@@ -5,11 +5,51 @@
 
 # ☕️ Use Case: X-Gains
 
-We want to create a fitness tracker with a predefined list of exercises.
-Users can track their trainings as well as their progress in the application.
+We have created a fitness tracker where users can create an account, <br>
+log in, add & modify workouts and track their activities and exercises. <br>
+The data is persisted in an H2 in-memory database and deployed on Render <br>
+in a Docker container.
 
-The application should run on GitHub Codespaces and interface with a GUI running on Budibase.
-Interfacing is done using REST API's and documentation is done in Swagger UI.
+The application was created using an MVC design pattern. <br>
+The application is divided into different layers: 
+- Presentation Layer: Frontend (Built with Budibase), Controller classes
+- Application Layer: Service classes
+- Domain Layer: Configuration classes, Model entities
+- Persistence Layer: Data access object, Repository classes
+- Database Layer: SQL statements, Database schema (H2)
+
+We have used Maven for dependency management as well as for project building, <br>
+ensuring a consistent build process for deployment on Render. <br>
+The project was built using Spring Boot, which simplifies the initial Spring setup <br>
+and leveraging the robust enterprise capabilities of the Spring Framework.
+
+We have configured an API using RestController annotations of Spring Boot and <br>
+adjusted our Swagger UI for documentation purposes.
+
+We have included several testing classes to ensure proper functioning of our <br>
+application using JUnit. Controller classes are tested with Postman and <br>
+can also be tried out on the Swagger-UI.
+
+Security is handled using the *spring-boot-starter-security* dependency. <br>
+At the moment, basic authentication is used to access the API Endpoints. <br>
+Credentials are validated using the user entity in the H2 database. <br>
+Passwords are stored hashed and decrypted using <br>
+a password encoder from org.springframework.security.crypto.
+
+### Links
+The following services are live at the moment of project delivery and will be <br>
+turned off later on. The free version of Render is used, which requires some <br>
+loading time (~3 min) for the initial request to startup the system.
+
+#### API Documentation & Testing
+https://xgains-render.onrender.com/swagger-ui/index.html
+
+#### H2 Database (Accessible ATM)
+https://xgains-render.onrender.com/h2-console
+
+#### Budibase
+http://example.com
+
 <br>
 
 ## Project Contributors
@@ -21,7 +61,7 @@ Interfacing is done using REST API's and documentation is done in Swagger UI.
 
 ## 📱 App Content
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="450" height="450">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="300" height="300">
 
 <br>
 
@@ -55,7 +95,12 @@ Interfacing is done using REST API's and documentation is done in Swagger UI.
 
 ## 🧩 Scenario and User Stories
 
-X-Gains is a basic fitness tracking app designed to assist our users in achieving their health and fitness goals. Whether you are a beginner starting your fitness journey or a more advanced athlete looking to optimize your workouts, X-Gains provides a user-friendly platform packed with robust features to support you every step of the way. X-Gains is more than just a fitness tracker; it is a tool designed to empower users to take control of their health and fitness, stay motivated, and achieve their desired results. X-Gains is your ultimate companion on the path to a healthier, stronger you.
+X-Gains is a basic fitness tracking app designed to assist our users in achieving their health <br>
+and fitness goals. Whether you are a beginner starting your fitness journey or a more advanced athlete <br>
+looking to optimize your workouts, X-Gains provides a user-friendly platform packed with robust features <br>
+to support you every step of the way. X-Gains is more than just a fitness tracker; it is a tool designed <br>
+to empower users to take control of their health and fitness, stay motivated, and achieve their desired <br>
+results. X-Gains is your ultimate companion on the path to a healthier, stronger you.
 
 <br>
 
