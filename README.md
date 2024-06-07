@@ -5,37 +5,36 @@
 
 # ☕️ Use Case: X-Gains
 
-We have created a fitness tracker where users can create an account,
+X-Gains is a fitness tracker where users can create an account,
 log in, add & modify workouts and track their activities and exercises.
 The data is persisted in an H2 in-memory database and deployed on Render
 in a Docker container.
 
 ---
 
-The application was created using an MVC design pattern.
-The application is divided into different layers: 
-- Presentation Layer: Frontend (Built with Budibase), Controller classes
-- Application Layer: Service classes
-- Domain Layer: Configuration classes, Model entities
-- Persistence Layer: Data access object, Repository classes
-- Database Layer: SQL statements, Database schema (H2)
+The application was created using an MVC design pattern and is divided into different layers: 
+- Presentation Layer: Frontend (Built with Budibase), Controller Classes
+- Application Layer: Service Classes
+- Domain Layer: Configuration Classes, Model Entities
+- Persistence Layer: Repository Classes
+- Database Layer: SQL Statements, H2 Database
 
-We have used Maven for dependency management as well as for project building,
+Maven is used for dependency management as well as for project building,
 ensuring a consistent build process for deployment on Render.
-The project was built using Spring Boot, which simplifies the initial Spring setup
-and leveraging the robust enterprise capabilities of the Spring Framework.
+The project implements Spring Boot, which simplifies the initial Spring setup, 
+leveraging the capabilities of the Spring Framework.
 
-We have configured an API using RestController annotations of Spring Boot and
-adjusted our Swagger UI for documentation purposes.
+The API is configured using RestController annotations and
+documented with Swagger-UI.
 
-We have included several testing classes to ensure proper functioning of our
-application using JUnit. Controller classes are tested with Postman and
-can also be tried out on the Swagger-UI.
+Several unit tests are included to ensure proper functioning of the
+application. Controller classes are tested with Postman and
+can also be tried out on Swagger-UI.
 
 Security is handled using the *spring-boot-starter-security* dependency.
-At the moment, basic authentication is used to access the API Endpoints.
+At the moment, basic authentication is used to access the API endpoints.
 Credentials are validated using the user entity in the H2 database.
-Passwords are stored hashed and decrypted using
+Passwords are stored hashed and are encrypted using
 a password encoder from org.springframework.security.crypto.
 
 ---
