@@ -104,8 +104,8 @@ results. X-Gains is your ultimate companion on the path to a healthier, stronger
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450"> <br>
 
-*→ For this project the user type "Admin" was not implemented, therefore the attributes "last-login" and "user_status" was not covered.
-*→ The ER-Model is a simple visualization of this project scope and could be extended for future projects.
+*→ For this project the user type "Admin" was not implemented, therefore the attributes "last-login" and "user_status" was not covered.*
+*→ The ER-Model is a simple visualization of this project scope and could be extended for future projects.*
 
 ## 🔧 Wireframe User
 
@@ -134,4 +134,4 @@ results. X-Gains is your ultimate companion on the path to a healthier, stronger
 <br>
 <br>
 
-*→ Implementation and overall scope/expectations not fully clear yet, hence a few user stories listed as optional and final implementation will vary from above mentioned scope.*
+*→ Implementation of User Role only in this project. Optional User Stories were not implemented, could be part of a future project or enhancement of the current one.*
