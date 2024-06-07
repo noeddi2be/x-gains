@@ -3,7 +3,6 @@ package com.brugg2.fitness_tracker.xgains;
 import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
