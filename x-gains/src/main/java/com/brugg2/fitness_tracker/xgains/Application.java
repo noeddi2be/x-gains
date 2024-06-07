@@ -45,7 +45,7 @@ public class Application {
         mediaType = "application/json", examples = @ExampleObject(
             value = """
                 {
-                    "Message": "Welcome to X-Gains! You are logged in as Bob.",
+                    "Message": "Welcome to X-Gains! You are logged in as Bob."
                 }
             """)
         )
