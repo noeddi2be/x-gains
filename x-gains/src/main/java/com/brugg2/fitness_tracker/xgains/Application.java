@@ -44,17 +44,19 @@ public class Application {
         mediaType = "application/json", examples = @ExampleObject(
             value = """
                 {
-                    "Message": "Welcome to X-Gains! You are logged in as Bob."
+                    "message": "Welcome to X-Gains! You are logged in as Bob.",
+                    "state": "1"
                 }
             """)
         )
     )
 	@GetMapping
-    public Map<String, String> home(Principal principal, HttpSession session) {
+    public Map<String, Object> home(Principal principal, HttpSession session) {
     String message = "Welcome to X-Gains! You are logged in as " + principal.getName() + ".";
 
-    Map<String, String> response = new HashMap<>();
+    Map<String, Object> response = new HashMap<>();
     response.put("message", message);
+    response.put("state", 1);
 
     return response;
 }
