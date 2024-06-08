@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +71,13 @@ public class ExerciseController {
     )
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(
         mediaType = "application/json", examples = @ExampleObject(
-            value = "Exercise 1 created!"
+            value = ("""
+                {
+                    "message": "Exercise 1 created!",
+                    "workoutId": 1,
+                    "exerciseId": 1 
+                }
+            """)
             )
         )
     )
@@ -78,6 +85,7 @@ public class ExerciseController {
     public ResponseEntity addExercise(@RequestBody Map<String, Object> json, @AuthenticationPrincipal UserDetails userDetails) {
 
         Exercise exercise = new Exercise();
+        int workoutId;
 
         try {
             JSONObject jsonObject = new JSONObject(json);
@@ -88,7 +96,7 @@ public class ExerciseController {
             Integer numberOfSets = jsonObject.has("numberOfSets") ? jsonObject.getInt("numberOfSets") : null;
             Integer time = jsonObject.has("time") ? jsonObject.getInt("time") : null;
             Integer distance = jsonObject.has("distance") ? jsonObject.getInt("distance") : null;
-            int workoutId = jsonObject.getInt("workoutId");
+            workoutId = jsonObject.getInt("workoutId");
 
             Workout workout = workoutService.getWorkoutByWorkoutId(workoutId);
 
@@ -112,7 +120,12 @@ public class ExerciseController {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
 
         }
-        return ResponseEntity.ok("Exercise " + exercise.getExerciseId() + " created!");
+        Map<String, Object> response = new HashMap<>();
+        response.put("Message", "Exercise " + exercise.getExerciseId() + " created! ");
+        response.put("workoutId", workoutId);
+        response.put("exerciseId", exercise.getExerciseId());
+
+        return ResponseEntity.ok(response);
     }
 
     @Operation(summary = "Get all exercises of a workout", 
