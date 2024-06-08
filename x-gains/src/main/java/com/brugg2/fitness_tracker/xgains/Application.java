@@ -30,9 +30,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class Application {
 
-    @Autowired
-    private HttpServletRequest request;
-
 	@Autowired
 	public static void main(String[] args) {
 		SpringApplication.run(Application.class, args);
@@ -53,7 +50,7 @@ public class Application {
         )
     )
 	@GetMapping
-    public Map<String, Object> home(Principal principal, HttpSession session) {
+    public Map<String, Object> home(Principal principal, HttpSession session, HttpServletRequest request) {
     String message = "Welcome to X-Gains! You are logged in as " + principal.getName() + ".";
     String authorizationHeader = request.getHeader("Authorization");
 
