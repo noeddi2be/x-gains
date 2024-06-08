@@ -166,25 +166,25 @@ public class ExerciseController {
             
         try {
             if (workoutId == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No ID specified!");
+                return ResponseEntity.status(HttpStatus.OK).body("No ID specified!");
             }
 
             if (workoutService.getWorkoutByWorkoutId(workoutId) == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No workout with ID " + workoutId + " found."); 
+                return ResponseEntity.status(HttpStatus.OK).body("No workout with ID " + workoutId + " found."); 
             }
 
             List<Exercise> allExercises = exerciseService.getAllExercisesForWorkout(workoutId);
 
             if (allExercises.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No exercises in workout " + workoutId + ".");
+                return ResponseEntity.status(HttpStatus.OK).body("No exercises in workout " + workoutId + ".");
             }
 
             if (workoutService.getWorkoutByWorkoutId(workoutId).getUser() != userService
             .getUserByUsername(userDetails.getUsername()).get()) {
-                return ResponseEntity.ok("Not allowed to get workout details of this workout! " + workoutId);
+                return ResponseEntity.status(HttpStatus.OK).body("Not allowed to get workout details of this workout! " + workoutId);
         }
 
-            return ResponseEntity.ok(allExercises);
+            return ResponseEntity.status(HttpStatus.OK).body(allExercises);
             
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
