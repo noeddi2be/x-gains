@@ -62,10 +62,10 @@ public class WorkoutRepositoryTest {
         workout = workoutRepository.getReferenceById(9999);
 
         Workout workout2 = new Workout();
-        workout = workoutRepository.findWorkoutByName(workoutName);
+        workout2 = workoutRepository.findWorkoutByName(workoutName);
 
         // Assert if workouts match
-        assertEquals(workout, workout2);
+        assertEquals(workout.getWorkoutName(), workout2.getWorkoutName());
         
     }
 
