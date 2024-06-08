@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.ExampleObject;
-
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,6 +30,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 public class Application {
 
+    @Autowired
+    private HttpServletRequest request;
 
 	@Autowired
 	public static void main(String[] args) {
@@ -44,8 +46,8 @@ public class Application {
         mediaType = "application/json", examples = @ExampleObject(
             value = """
                 {
-                    "message": "Welcome to X-Gains! You are logged in as Bob.",
-                    "state": "1"
+                    "auth": "RW15OnwermA3b3Jk",
+                    "message": "Welcome to X-Gains! You are logged in as Bob."
                 }
             """)
         )
@@ -53,10 +55,11 @@ public class Application {
 	@GetMapping
     public Map<String, Object> home(Principal principal, HttpSession session) {
     String message = "Welcome to X-Gains! You are logged in as " + principal.getName() + ".";
+    String authorizationHeader = request.getHeader("Authorization");
 
     Map<String, Object> response = new HashMap<>();
     response.put("message", message);
-    response.put("state", 1);
+    response.put("auth", authorizationHeader.substring(6));
 
     return response;
 }
