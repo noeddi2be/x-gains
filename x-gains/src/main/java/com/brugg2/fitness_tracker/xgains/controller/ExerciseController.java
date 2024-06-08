@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 
 @RestController
@@ -119,7 +118,7 @@ public class ExerciseController {
     @Operation(summary = "Get all exercises of a workout", 
         parameters = {
             @Parameter(name = "workoutId", 
-                description = "Provide workout ID as Request Parameter", 
+                description = "Provide workout ID as request parameter", 
                 required = true, 
                 example = "9999" 
             )
@@ -196,7 +195,7 @@ public class ExerciseController {
     @Operation(summary = "Delete an exercise", 
         parameters = {
             @Parameter(name = "exerciseId", 
-                description = "Provide exercise ID as path variable", 
+                description = "Provide exercise ID as request parameter", 
                 required = true, 
                 example = "9999" 
             )
@@ -208,8 +207,8 @@ public class ExerciseController {
             )
         )
     )
-    @DeleteMapping("/delete/{exerciseId}")
-    public ResponseEntity deleteExercise(@PathVariable Integer exerciseId, @AuthenticationPrincipal UserDetails userDetails) {
+    @DeleteMapping("/delete")
+    public ResponseEntity deleteExercise(@RequestParam Integer exerciseId, @AuthenticationPrincipal UserDetails userDetails) {
 
         try {
             if(exerciseService.getExercisebyId(exerciseId) == null) {
