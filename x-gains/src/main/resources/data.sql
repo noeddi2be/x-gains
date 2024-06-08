@@ -11,12 +11,12 @@ INSERT INTO location (location_id, location_name) VALUES (20, 'Brugg'), (19, 'Ba
 -- Insert Workouts
 INSERT INTO workout (workout_id, workout_name, workout_date, duration, fk_user_id, fk_location_id)
 VALUES 
-    (9999, 'Morning Workout', '2024-04-01', 60, 9999, 20), -- User 1 in Brugg
-    (9998, 'Afternoon Workout', '2024-04-01', 60, 9998, 19), -- User 2 in Basel
-    (9997, 'Evening Workout', '2024-04-01', 60, 9997, 18), -- User 3 in Olten
-    (9996, 'Morning Workout', '2024-04-08', 60, 9999, 20), -- User 1 in Brugg
-    (9995, 'Afternoon Workout', '2024-04-08', 60, 9998, 19), -- User 2 in Basel
-    (9994, 'Evening Workout', '2024-04-08', 60, 9997, 18); -- User 3 in Olten
+    (9999, 'Morning Workout 04-01', '2024-04-01', 60, 9999, 20), -- User 1 in Brugg
+    (9998, 'Afternoon Workout 04-01', '2024-04-01', 60, 9998, 19), -- User 2 in Basel
+    (9997, 'Evening Workout 04-01', '2024-04-01', 60, 9997, 18), -- User 3 in Olten
+    (9996, 'Morning Workout 04-08', '2024-04-08', 60, 9999, 20), -- User 1 in Brugg
+    (9995, 'Afternoon Workout 04-08', '2024-04-08', 60, 9998, 19), -- User 2 in Basel
+    (9994, 'Evening Workout 04-08', '2024-04-08', 60, 9997, 18); -- User 3 in Olten
 
 -- Insert Exercises
 INSERT INTO exercise (exercise_id, exercise_name, exercise_description, weight, repetition, number_of_sets, time, distance, fk_workout_id)

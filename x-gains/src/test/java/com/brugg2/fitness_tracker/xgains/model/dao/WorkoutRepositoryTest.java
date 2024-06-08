@@ -51,5 +51,23 @@ public class WorkoutRepositoryTest {
 		
 	}
 
+    @Test
+    void testFindWorkoutByName() {
+
+        // Arrange
+        String workoutName = "Morning Workout 04-01";
+
+        // Act
+        Workout workout = new Workout();
+        workout = workoutRepository.getReferenceById(9999);
+
+        Workout workout2 = new Workout();
+        workout = workoutRepository.findWorkoutByName(workoutName);
+
+        // Assert if workouts match
+        assertEquals(workout, workout2);
+        
+    }
+
 
 }

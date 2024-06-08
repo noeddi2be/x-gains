@@ -2,6 +2,7 @@ package com.brugg2.fitness_tracker.xgains.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import com.brugg2.fitness_tracker.xgains.model.dao.WorkoutRepository;
 import com.brugg2.fitness_tracker.xgains.model.entity.Location;
 import com.brugg2.fitness_tracker.xgains.model.entity.User;
 import com.brugg2.fitness_tracker.xgains.model.entity.Workout;
@@ -172,6 +173,66 @@ public class WorkoutController {
             }
 
             return ResponseEntity.ok(workoutService.getAllWorkouts(user));
+
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());
+
+        }
+    }
+
+    /**
+     * Retrieve a specific workout.
+     * 
+     * @param workoutId method looks for 'workoutName'. 
+     */
+    @Operation(summary = "Get a workout workout by name", 
+        parameters = {
+            @Parameter(name = "workoutName", 
+                description = "Provide the name of a workout",
+                required = true, 
+                example = "Morning Workout 04-01" 
+            )
+        } 
+    )
+    @ApiResponse(responseCode = "200", description = "OK", content = @Content(
+        mediaType = "application/json", examples = @ExampleObject(
+            value = """
+                [
+                    {
+                        "workoutId": 1,
+                        "workoutName": "Morning Workout 04-01",
+                        "workoutDate": "2024-01-25T17:30:00.000+00:00",
+                        "duration": 60,
+                        "user": {
+                            "userId": 9999,
+                            "accountType": "user",
+                            "username": "Emy",
+                            "email": "emily.sharp@gmail.com",
+                            "firstname": "Emily",
+                            "lastname": "Sharp",
+                            "birthdate": "1979-10-11T23:00:00.000+00:00"
+                        },
+                        "location": {
+                            "locationId": 20,
+                            "locationName": "Brugg"
+                        }
+                    }
+                ]
+                    
+            """)
+        )
+    )
+    @GetMapping("/name")
+    public ResponseEntity getWorkoutByName(@RequestParam String workoutName, @AuthenticationPrincipal UserDetails userDetails) {
+
+        try {
+            Workout workout = workoutService.getWorkoutByName(workoutName);
+
+            if (workout == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Workout not found");
+            }
+
+            return ResponseEntity.ok(workoutService.getWorkoutByName(workoutName));
 
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e.toString());

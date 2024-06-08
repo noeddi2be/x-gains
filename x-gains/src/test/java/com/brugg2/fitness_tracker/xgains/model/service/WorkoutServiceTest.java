@@ -110,6 +110,7 @@ public class WorkoutServiceTest {
 
         // Arrange
         Workout workout = createWorkout();
+        workout.setWorkoutName("Test Workout 2");
 
         // Act
         workoutService.createWorkout(workout);
@@ -119,6 +120,23 @@ public class WorkoutServiceTest {
         // Assert workout ID's match
         assertEquals(workoutId, workoutId2);
         assertTrue(workout.getWorkoutId() + 1 > 0);
+
+    }
+
+    @Test
+    void testGetWorkoutByName() {
+
+        // Arrange
+        Workout workout = createWorkout();
+        workout.setWorkoutName("Morning Workout 05-05");
+
+        // Act
+        workoutService.createWorkout(workout);
+        String workoutName = workout.getWorkoutName();
+        String workoutName2 = workout.getWorkoutName();
+
+        // Assert workout ID's match
+        assertEquals(workoutName, workoutName2);
 
     }
 }

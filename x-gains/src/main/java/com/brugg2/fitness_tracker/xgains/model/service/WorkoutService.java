@@ -31,4 +31,8 @@ public class WorkoutService {
         return workoutRepository.getWorkoutById(workoutId);
     }
 
+    public Workout getWorkoutByName(String workoutName) {
+        return workoutRepository.findWorkoutByName(workoutName);
+    }
+
 }

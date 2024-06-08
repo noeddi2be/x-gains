@@ -24,7 +24,7 @@ public final class Workout {
     @Column(name = "workout_id")
     private Integer workoutId;
 
-    @Column(name = "workout_name", nullable = false, length = 50)
+    @Column(name = "workout_name", nullable = false, length = 50, unique = true)
     private String workoutName;
 
     @Column(name = "workout_date")
