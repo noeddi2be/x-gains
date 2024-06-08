@@ -170,13 +170,13 @@ public class ExerciseController {
             }
 
             if (workoutService.getWorkoutByWorkoutId(workoutId) == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No workout found."); 
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No workout with ID " + workoutId + " found."); 
             }
 
             List<Exercise> allExercises = exerciseService.getAllExercisesForWorkout(workoutId);
 
             if (allExercises.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No exercises in workout.");
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No exercises in workout " + workoutId + ".");
             }
 
             if (workoutService.getWorkoutByWorkoutId(workoutId).getUser() != userService
