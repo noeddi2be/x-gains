@@ -24,6 +24,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -118,7 +119,7 @@ public class ExerciseController {
     @Operation(summary = "Get all exercises of a workout", 
         parameters = {
             @Parameter(name = "workoutId", 
-                description = "Provide workout ID as path variable", 
+                description = "Provide workout ID as Request Parameter", 
                 required = true, 
                 example = "9999" 
             )
@@ -161,25 +162,27 @@ public class ExerciseController {
             """)
         )
     )
-    @GetMapping("/all/{workoutId}")
-    public ResponseEntity getExercisesOfWorkout(@PathVariable Integer workoutId, @AuthenticationPrincipal UserDetails userDetails) {
+    @GetMapping("/all")
+    public ResponseEntity getExercisesOfWorkout(@RequestParam Integer workoutId, @AuthenticationPrincipal UserDetails userDetails) {
             
-        Integer id = workoutId;
-
         try {
-            if (id == null) {
+            if (workoutId == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No ID specified!");
             }
 
-            List<Exercise> allExercises = exerciseService.getAllExercisesForWorkout(id);
-
-            if (allExercises.isEmpty()) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No workout found or no exercise in workout.");
+            if (workoutService.getWorkoutByWorkoutId(workoutId) == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No workout found."); 
             }
 
-            if (workoutService.getWorkoutByWorkoutId(id).getUser() != userService
+            List<Exercise> allExercises = exerciseService.getAllExercisesForWorkout(workoutId);
+
+            if (allExercises.isEmpty()) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No exercises in workout.");
+            }
+
+            if (workoutService.getWorkoutByWorkoutId(workoutId).getUser() != userService
             .getUserByUsername(userDetails.getUsername()).get()) {
-                return ResponseEntity.ok("Not allowed to get workout details of this workout! " + id);
+                return ResponseEntity.ok("Not allowed to get workout details of this workout! " + workoutId);
         }
 
             return ResponseEntity.ok(allExercises);
