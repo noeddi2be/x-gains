@@ -69,27 +69,32 @@ http://example.com <br>
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="500" height="500">
 
 We faced huge problems implementing the frontend with Budibase. Especially difficult were functionality to login
-with basic authentication as well as using dynamic variables to store data recieved by API requests.
+with basic authentication as well as using dynamic variables to store data recieved by API responses.
+
 For the scope of this project we wanted to use basic authentication with credentials stored in the database.
-We were not able to define access to different screens by Budibase roles. It was possible to secure the API endpoints
-from the backend, but we were not able to store a cookie, we were not able to store the base64 representation of 
-username and password and we were not able to assign Budibase roles to database users. To ensure proper functioning,
-we would need to implement JWT in the backend and use a baerer token in the frontend.
+We were not able to dynamically assign user roles to Budibase roles for accessing different screens. The API 
+endpoints have been secured in the backend, but we were not able to store a cookie in Budibase, we were not able to 
+consistently store the base64 representation of username and password for further API calls, and even after calculating
+the base64 value in the backend, the assignment to a dynamic variable was inconsistent and not working correctly for us.
+To ensure proper functioning, we would have needed to implement a JWT in the backend and use a bearer token in the frontend.
 
 We also faced issues with dynamic variables. After receiving a response from the backend, we have not been able to
-consistently store information in a variable to use it for other API calls. For example:
+consistently store information in a variable to use it for other http requests. For example:
 The database schema requires us to provide a workout ID for storing exercises. After creating a workout, we need to
 be able to store the workout ID to add exercises to that workout. When saving the workout ID in a dynamic variable,
 the variable will either automatically trigger a new API call, or will not update consistently. We needed to implement
-another API call to receive the workout ID by name.
+another API endpoint to receive the workout ID by name as well as change our database schema and
+placeholder data to make the workout name unique.
 
-There is no possibility to check what is stored in a variable. There are also random bugs where dynamic variables don't
-appear and can't be used. The overall functionality seems very buggy and the overall logic is not really clear.
+Mundane tasks like working with variables or updating table data is complicated and not very intuitive.
+There is no obvious possibility to check what is stored in a variable. There are random bugs where dynamic 
+variables don't appear and can't be used. The overall functionality seems buggy and the overall workflow logic is 
+not clear and intuitive. Further, there are only few resources on how to use Budibase available online.
 
-It would have been better to implement the frontent ourselves, but this has not been possible due to time constraints
-after investing a lot of time in Budibase. We are therefore just providing a basic functionality of the frontend,
-not using the whole capability of the backend. We would not use Budibase in such a project again and would
-not recommend it.
+It would have been better to implement the frontent ourselves with JS, HTML and CSS, but this has not been possible 
+due to time constraints after investing a lot of time in Budibase. 
+We are therefore just providing a basic functionality of the frontend, not using the whole capability 
+of the backend. We would not use Budibase in such a project again and the experience was not unpleasant.
 
 ---
 
