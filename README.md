@@ -94,7 +94,7 @@ not clear and intuitive. Further, there are only few resources on how to use Bud
 It would have been better to implement the frontent ourselves with JS, HTML and CSS, but this has not been possible 
 due to time constraints after investing a lot of time in Budibase. 
 We are therefore just providing a basic functionality of the frontend, not using the whole capability 
-of the backend. We would not use Budibase in such a project again and the experience was not unpleasant.
+of the backend. We would not use Budibase in such a project again and the experience was not very pleasant.
 
 ---
 
