@@ -45,6 +45,9 @@ a password encoder from org.springframework.security.crypto.
 - Boris Vittek
 - Manuel Notter
 
+Every project member contributed significantly in every phase of the project, ensuring a collaborative outcome.
+Throughout the projcet, Manuel led the back-end development and Boris coordinated the front-end efforts. 
+
 ### 🔗 Links
 The following services are live at the moment of project delivery and will be
 turned off later on. The free version of Render is used, which requires some
