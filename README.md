@@ -47,6 +47,7 @@ a password encoder from org.springframework.security.crypto.
 
 Every project member contributed significantly in every phase of the project, ensuring a collaborative outcome.
 Throughout the projcet, Manuel led the back-end development and Boris coordinated the front-end efforts. 
+Silvana was also significantly involved in the front end and was responsible for the wireframe while Dominik was taking care of the documentation stuff and the finish of the project but also supported the frontend development.
 
 ### 🔗 Links
 The following services are live at the moment of project delivery and will be
@@ -68,18 +69,18 @@ http://example.com <br>
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="500" height="500">
 
-We faced huge problems implementing the frontend with Budibase. Especially difficult were the functionality to login
-with basic authentication as well as using dynamic variables to store data recieved by API responses.
+Unfortunately, we faced huge problems implementing the frontend with Budibase. Especially difficult were the functionality to login
+with basic authentication as well as using dynamic variables to store data received by API responses.
 
 For the scope of this project we wanted to use basic authentication with credentials stored in the database.
 We were not able to dynamically assign backend user roles to Budibase roles for accessing different screens. The API 
-endpoints have been secured in the backend, but we were not able to store a cookie in Budibase, we were not able to 
+endpoints have been secured in the backend, but we were not able to store a cookie in Budibase, we were also not able to 
 consistently store the base64 representation of username and password for further API calls, and even after calculating
 the base64 value in the backend, the assignment to a dynamic variable was inconsistent and not working correctly for us.
 To ensure proper functioning, we would have needed to implement a JWT in the backend and use a bearer token in the frontend.
 
 We also faced further issues with dynamic variables. After receiving a response from the backend, we have not been able to
-consistently store information in a variable to use it for other http requests. For example:
+consistently store information in a variable to use it for following http requests. For example:
 The database schema requires us to provide a FK workout ID for storing exercises. After creating a workout, we need to
 be able to store the workout ID in the frontend to add exercises to that workout. When saving the workout ID in a dynamic variable,
 the variable sometimes either automatically triggered a new API call, or would not update consistently. Retriggering requests
@@ -90,9 +91,9 @@ variables.
 
 Mundane tasks like working with variables or updating table data is complicated and not very intuitive.
 There is no obvious possibility to check what is stored in a variable without developer tools in the browser. 
-Debugging is difficult and not very transparent. There are random bugs where dynamic variables don't appear and 
-can't be used. The overall functionality seemed buggy and the workflow logic was not clear and intuitive. 
-Further, we struggled to find online resources to guide us through our problems.
+Debugging is difficult and lacks transparency to a big degree. More than once we were confronted with random bugs where dynamic variables don't appear and 
+therefore cannot be used . The overall functionality seemed buggy and the workflow logic was not clear and intuitive. 
+Furthermore, we struggled to find online resources to guide us through our problems in an effectice and efficient manner.
 
 It would have been better to implement the frontent ourselves with JS, HTML and CSS, but this has not been possible 
 due to time constraints after investing a lot of time in our Budibase project. 
