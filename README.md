@@ -55,17 +55,17 @@ turned off later on. The free version of Render is used, which requires some
 loading time (~3 min) for the initial request to startup the system.
 
 #### ✳️ API Documentation & Testing
-https://xgains-render.onrender.com/swagger-ui/index.html <br>
+[Swagger-UI](https://xgains-render.onrender.com/swagger-ui/index.html) <br>
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/swagger.png?raw=true" width="500" height="380">
 
 #### 💿 H2 Database (Accessible ATM)
-https://xgains-render.onrender.com/h2-console <br>
+[H2 Console](https://xgains-render.onrender.com/h2-console) <br>
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/h2.png?raw=true" width="500" height="300">
 
 #### 🎨 Budibase
-http://example.com <br>
+[Budibase Frontend](https://inttech.budibase.app/app/brugg2_xgains#/home) <br>
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/thumbnail.jpg?raw=true" width="500" height="500">
 
