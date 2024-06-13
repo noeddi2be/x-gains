@@ -46,11 +46,11 @@ public class ExerciseController {
     private UserService userService;
 
     /**
-     * Method to create a new exercisd using. 
+     * Method to create a new exercise.
      * Input names of the attributes need to be the java class variable names.
      * 
-     * @param exercise is a JSON object and converted to a Java object by Spring.
-     * @return Returns the saved object in the database in JSON format.
+     * @param exercise is a JSON object and converted to a Java object.
+     * @return Returns a response entity.
      */
     @Operation(summary = "Add a new exercise", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
         description = "New exercise details", required = true, content = @Content(
@@ -127,6 +127,7 @@ public class ExerciseController {
 
         return ResponseEntity.ok(response);
     }
+
 
     @Operation(summary = "Get all exercises of a workout", 
         parameters = {

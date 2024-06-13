@@ -30,8 +30,8 @@ public interface LocationRepository extends JpaRepository<Location, Integer> {
     Location findLocationById(int locationId);
 
         /**
-     * Method to return location by ID.
-     * @param locationId integer primary key location.
+     * Method to return location by name.
+     * @param name String with location name.
      * @return Location object.
      */
     @Query(value = """

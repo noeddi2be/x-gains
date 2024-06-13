@@ -6,7 +6,7 @@ VALUES
     (9997, 'user', 'GigaChad50', 'gg5@icloud.com', '$2a$10$KkQtRnijBLY/HOX2IvFlwOllFfxfs8gRQJ1AQzRtXRqADXR2TKmWO', 'Bill', 'Gates', '1960-05-02');
 
 -- Insert Locations
-INSERT INTO location (location_id, location_name) VALUES (20, 'Brugg'), (19, 'Basel'), (18, 'Olten');
+INSERT INTO location (location_id, location_name) VALUES (20, 'Brugg'), (19, 'Basel'), (18, 'Olten'), (17, 'Zürich'), (16, 'Luzern'), (15, 'Baden');
 
 -- Insert Workouts
 INSERT INTO workout (workout_id, workout_name, workout_date, duration, fk_user_id, fk_location_id)

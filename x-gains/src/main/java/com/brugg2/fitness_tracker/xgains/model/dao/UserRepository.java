@@ -30,8 +30,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
     public User findUserByEmail(String email);
 
        /**
-     * Method to find user by email. 
-     * @param email String email address of user. 
+     * Method to find user by username. 
+     * @param username String username of user. 
      * @return User object of the corresponding user.
      */
     @Query(value = "SELECT * FROM account " +

@@ -47,12 +47,11 @@ public class UserController {
     }
 
     /**
-     * Method to create a new user saves it to the database.
+     * Method to create a new user and save it to the database.
      * Input names of the attributes need to be the java class variable names.
      * 
-     * @param user is input as a JSON object and converted to a Java object by
-     *             Spring.
-     * @return Returns the saved object in the database in JSON format.
+     * @param user is input as a JSON object and converted to a Java object.
+     * @return Returns a response entity with success or error message.
      */
         @Operation(summary = "Create a new user", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
         description = "New user details", required = true, content = @Content(
@@ -120,10 +119,10 @@ public class UserController {
 
     /**
      * Method to remove a new user from the database.
-     * Input as a json object and converted to a String.
+     * Gets user information from AuthenticationPrincipal.
      * 
      * @param UserDetails User needs to be logged in.
-     * @return Returns the email of the deleted user in json format.
+     * @return Returns the email of the deleted user and success message.
      */
     @Operation(summary = "Delete user account")
     @ApiResponse(responseCode = "200", description = "OK", content = @Content(

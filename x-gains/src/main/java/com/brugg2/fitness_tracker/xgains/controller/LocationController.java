@@ -30,8 +30,8 @@ public class LocationController {
      * Method to create a new location.
      * Input names of the attributes need to be the java class variable names.
      * 
-     * @param location is a JSON object and converted to a Java object by Spring.
-     * @return Returns the saved object in the database in JSON format.
+     * @param location is a JSON object and converted to a Java object.
+     * @return Returns the saved location name in JSON format.
      */
     @Operation(summary = "Add a new location", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
         description = "New location details", required = true, content = @Content(

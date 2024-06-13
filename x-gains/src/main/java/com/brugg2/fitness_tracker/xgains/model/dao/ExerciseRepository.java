@@ -15,10 +15,8 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Integer> {
         /**
          * Abstract method. Handled by spring framework.
          * When the method is called, it executes a manual query.
-         * The query is specified in the :userId parameter. JPA supports named
-         * parameters -> ":param"
          * 
-         * @param userId integer primary key workout.
+         * @param workoutId integer primary key workout.
          * @return java.util.List with Exercise objects.
          */
         @Query(value = "SELECT * FROM exercise " +
@@ -27,8 +25,8 @@ public interface ExerciseRepository extends JpaRepository<Exercise, Integer> {
 
         /**
          * Method to find exercises by ID.
-         * @param exerciseId integer primary key workout.
-         * @return Exercise Object
+         * @param exerciseId integer primary key exercise.
+         * @return Exercise object.
          */
         @Query(value = """
                         SELECT * FROM exercise

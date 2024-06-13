@@ -184,6 +184,7 @@ public class WorkoutController {
      * Retrieve a specific workout.
      * 
      * @param workoutId method looks for 'workoutName'. 
+     * @return Returns the workout java object in JSON format.
      */
     @Operation(summary = "Get a workout workout by name", 
         parameters = {
@@ -244,7 +245,8 @@ public class WorkoutController {
      * Deletes a specific workout.
      * Input is required in json format.
      * 
-     * @param workoutId method looks for 'workoutId' in the json payload.
+     * @param workoutId method looks for 'workoutId' in as request parameter.
+     * @return Returns a success message string.
      */
     @Operation(summary = "Delete a workout", 
         parameters = {
