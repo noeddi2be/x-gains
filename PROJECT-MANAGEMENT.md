@@ -26,7 +26,7 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - [x] Create wireframe
 - [x] Create model classes
 - [x] Create controller classes
-- [ ] Implement frontend
+- [x] Implement frontend
 - [x] Implement data source connection
 - [x] Create Basic Spring Boot application with a webserver
 
@@ -34,14 +34,14 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 ##### Login Screen view
 - [x] Create account
 - [x] Delete account
-- [ ] Login
+- [x] Login (POC)
       
 ##### Dashboard view
-- [ ] Dashboard (weekly workouts, weekly exercises, weekly training time)
+- [X] Dashboard (weekly workouts, weekly exercises, weekly training time) -> POC
 - [x] Create new workout
 - [x] View all workouts
 - [x] View account
-- [ ] Logout
+- [X] Logout (POC)
 
 ##### Account view
 - [x] View account details
@@ -55,7 +55,7 @@ In this file, we intend to manage tasks of our project, mostly regarding the Jav
 - [x] Save exercise to workout (values filled in form)
 - [x] Get all exercises from workout
 - [x] Discard (delete exercise from workout)
-- [ ] Dropdown for gym list
+- [X] Dropdown for gym list
 - [ ] (Timer) - only do when enough time, frontent possible? Set manual.
 
 
