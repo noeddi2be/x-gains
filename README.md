@@ -129,6 +129,8 @@ of the backend. We would not use Budibase in such a project again and the experi
 | 19 | Sprints | Sets | Time | Distance |
 | 20 | Box Jumps | Sets | Repetitions | Height |
 
+*→ The exercises are in the frontend not yet implemented as a list, only as a text field. This could be enhanced in the frontend as a future project enhancement.*
+
 ## 🧩 Scenario and User Stories
 
 X-Gains is a basic fitness tracking app designed to assist our users in achieving their health <br>
