@@ -57,17 +57,17 @@ loading time (~3 min) for the initial request to startup the system.
 #### ✳️ API Documentation & Testing
 [Swagger-UI](https://xgains-render.onrender.com/swagger-ui/index.html) <br>
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/swagger.png?raw=true" width="500" height="380">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/swagger.png?raw=true" width="500" height=auto>
 
 #### 💿 H2 Database (Accessible on request)
 [H2 Console](https://xgains-render.onrender.com/h2-console) <br>
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/h2.png?raw=true" width="500" height="300">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/h2.png?raw=true" width="500" height=auto>
 
 #### 🎨 Budibase
 [Budibase Frontend](https://inttech.budibase.app/app/brugg2_xgains#/home) <br>
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height="500">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height=auto>
 
 Unfortunately, we faced huge problems implementing the frontend with Budibase. Especially difficult were the functionality to login
 with basic authentication as well as using dynamic variables to store data received by API responses.
@@ -139,14 +139,14 @@ results. X-Gains is your ultimate companion on the path to a healthier, stronger
 
 ## 🔧 ER-Model
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450"> <br>
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height=auto> <br>
 
 *→ For this project the user type "Admin" was not implemented, therefore the attributes "last-login" and "user_status" was not covered.* <br>
 *→ The ER-Model is a simple visualization of this project scope and could be extended for future projects.*
 
 ## 🔧 Wireframe
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="900" height="550"> <br>
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="900" height=auto> <br>
 
 ### 🧩 User Stories
 
