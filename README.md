@@ -71,9 +71,11 @@ loading time (~3 min) for the initial request to startup the system.
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height=auto>
 
 #### 🎥 Demo Video
-[Video](https://example.com/path/to/resource) <br>
+[Demo-Video X-Gains](https://example.com/path/to/resource) <br>
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height=auto>
+---
+
+### Remarks about the frontend implementation with Budibase
 
 Unfortunately, we faced huge problems implementing the frontend with Budibase. Especially difficult were the functionality to login
 with basic authentication as well as using dynamic variables to store data received by API responses.
