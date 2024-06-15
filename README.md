@@ -70,6 +70,11 @@ loading time (~3 min) for the initial request to startup the system.
 
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height=auto>
 
+#### 🎥 Demo Video
+[Video](https://example.com/path/to/resource) <br>
+
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height=auto>
+
 Unfortunately, we faced huge problems implementing the frontend with Budibase. Especially difficult were the functionality to login
 with basic authentication as well as using dynamic variables to store data received by API responses.
 
@@ -129,7 +134,7 @@ of the backend. We would not use Budibase in such a project again and the experi
 | 19 | Sprints | Sets | Time | Distance |
 | 20 | Box Jumps | Sets | Repetitions | Height |
 
-*→ The exercises are in the frontend not yet implemented as a list, only as a text field. This could be enhanced in the frontend as a future project enhancement.*
+*→ The exercises are not yet implemented as a list in the frontend but as a text field. This could be enhanced in the future.*
 
 ## 🧩 Scenario and User Stories
 
