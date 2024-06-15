@@ -1,4 +1,6 @@
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/spring-x-gains.png?raw=true" width="550" height="200">
+<div align="center">
+  <img src="https://github.com/noeddi2be/x-gains/blob/main/www/spring-x-gains.png?raw=true" width="550" height=auto border-radius=10>
+</div>
 
 
 # [👉🏼 Project Management File](https://github.com/noeddi2be/x-gains/blob/main/PROJECT-MANAGEMENT.md)
@@ -46,7 +48,7 @@ a password encoder from org.springframework.security.crypto.
 - Manuel Notter
 
 Every project member contributed significantly in every phase of the project, ensuring a collaborative outcome.
-Throughout the projcet, Manuel led the back-end development and Boris coordinated the front-end efforts. 
+Throughout the project, Manuel led the back-end development and Boris coordinated the front-end efforts. 
 Silvana was also significantly involved in the front end and was responsible for the wireframe while Dominik was taking care of the documentation stuff and the finish of the project but also supported the frontend development.
 
 ### 🔗 Links
@@ -57,17 +59,17 @@ loading time (~3 min) for the initial request to startup the system.
 #### ✳️ API Documentation & Testing
 [Swagger-UI](https://xgains-render.onrender.com/swagger-ui/index.html) <br>
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/swagger.png?raw=true" width="500" height="380">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/swagger.png?raw=true" width="500" height=auto>
 
 #### 💿 H2 Database (Accessible on request)
 [H2 Console](https://xgains-render.onrender.com/h2-console) <br>
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/h2.png?raw=true" width="500" height="300">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/h2.png?raw=true" width="500" height=auto>
 
 #### 🎨 Budibase
 [Budibase Frontend](https://inttech.budibase.app/app/brugg2_xgains#/home) <br>
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height="500">
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height=auto>
 
 Unfortunately, we faced huge problems implementing the frontend with Budibase. Especially difficult were the functionality to login
 with basic authentication as well as using dynamic variables to store data received by API responses.
@@ -92,10 +94,10 @@ variables.
 Mundane tasks like working with variables or updating table data is complicated and not very intuitive.
 There is no obvious possibility to check what is stored in a variable without developer tools in the browser. 
 Debugging is difficult and lacks transparency to a big degree. More than once we were confronted with random bugs where dynamic variables don't appear and 
-therefore cannot be used . The overall functionality seemed buggy and the workflow logic was not clear and intuitive. 
-Furthermore, we struggled to find online resources to guide us through our problems in an effectice and efficient manner.
+therefore cannot be used. The overall functionality seemed buggy and the workflow logic was not clear and intuitive. 
+Furthermore, we struggled to find online resources to guide us through our problems in an effective and efficient manner.
 
-It would have been better to implement the frontent ourselves with JS, HTML and CSS, but this has not been possible 
+It would have been better to implement the frontend ourselves with JS, HTML and CSS, but this has not been possible 
 due to time constraints after investing a lot of time in our Budibase project. 
 We are therefore just providing a basic functionality of the frontend, not using the whole capability 
 of the backend. We would not use Budibase in such a project again and the experience was not very pleasant.
@@ -139,14 +141,14 @@ results. X-Gains is your ultimate companion on the path to a healthier, stronger
 
 ## 🔧 ER-Model
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height="450"> <br>
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/er-model.png?raw=true" width="840" height=auto> <br>
 
 *→ For this project the user type "Admin" was not implemented, therefore the attributes "last-login" and "user_status" was not covered.* <br>
 *→ The ER-Model is a simple visualization of this project scope and could be extended for future projects.*
 
-## 🔧 Wireframe User
+## 🔧 Wireframe
 
-<img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="900" height="550"> <br>
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/wireframe.png?raw=true" width="900" height=auto> <br>
 
 ### 🧩 User Stories
 
@@ -168,7 +170,6 @@ results. X-Gains is your ultimate companion on the path to a healthier, stronger
 * (Optional) As a user, I want to be able to view my past workout history and analyze my performance trends.
 * (Optional) As a user, I want to have a clock timer running while doing the workout and I want to be able to reset the timer manually.
 
-<br>
 <br>
 
 *→ Implementation of User Role only in this project. Optional User Stories were not implemented, could be part of a future project or enhancement of the current one.*
