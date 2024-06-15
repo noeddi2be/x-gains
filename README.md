@@ -71,7 +71,7 @@ loading time (~3 min) for the initial request to startup the system.
 <img src="https://github.com/noeddi2be/x-gains/blob/main/www/X-Gains_Logo.png?raw=true" width="500" height=auto>
 
 #### 🎥 Demo Video
-[Demo-Video X-Gains](https://example.com/path/to/resource) <br>
+[Demo-Video X-Gains](https://fhnw365-my.sharepoint.com/personal/dominik_schneider1_students_fhnw_ch/_layouts/15/stream.aspx?id=%2Fpersonal%2Fdominik%5Fschneider1%5Fstudents%5Ffhnw%5Fch%2FDocuments%2FDemoVideo%2Emp4&referrer=StreamWebApp%2EWeb&referrerScenario=AddressBarCopied%2Eview%2Efdc2cd0d%2D479d%2D4a4c%2D8154%2D9c0da459e417) <br>
 
 ---
 
