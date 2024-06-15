@@ -1,7 +1,6 @@
-<div align="center">
-  <img src="https://github.com/noeddi2be/x-gains/blob/main/www/spring-x-gains.png?raw=true" width="550" height=auto>
-</div>
-
+<br>
+<img src="https://github.com/noeddi2be/x-gains/blob/main/www/spring-x-gains.png?raw=true" width="550" height=auto>
+<br>
 
 # [👉🏼 Project Management File](https://github.com/noeddi2be/x-gains/blob/main/PROJECT-MANAGEMENT.md)
 
